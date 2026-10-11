@@ -1,82 +1,655 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
 
-<style>
+    <title>Avengers Database</title>
 
-html, body {
-    margin: 0;
-    min-height: 100%;
-}
+    <style>
 
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+        * {
+            box-sizing: border-box;
+        }
 
-    background-image: url('am.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
 
-.main-content {
-    flex: 1;
-}
+        html,
+        body {
+            margin: 0;
 
-.footer {
-    margin-top: auto;
-}
+            min-height: 100%;
+        }
 
-</style>
+
+        body {
+
+            min-height: 100vh;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            color: white;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0, 0, 0, 0.62),
+                    rgba(0, 0, 0, 0.78)
+                ),
+
+                url('am.png');
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+            background-attachment: fixed;
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+
+        /* NAVBAR */
+
+        nav {
+
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 50px;
+
+            background: rgba(5, 8, 14, 0.82);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+            backdrop-filter: blur(8px);
+
+        }
+
+
+
+        /* CLICKABLE LOGO */
+
+        .logo {
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            color: white;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+
+        }
+
+
+        .logo span {
+
+            color: #e63946;
+
+        }
+
+
+        .logo:hover {
+
+            opacity: 0.85;
+
+        }
+
+
+
+        /* NAV LINKS */
+
+        nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 28px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        nav a:hover {
+
+            color: #ff4d5a;
+
+        }
+
+
+
+        /* MAIN CONTENT */
+
+        .main-content {
+
+            flex: 1;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 80px 8%;
+
+        }
+
+
+
+        /* HERO */
+
+        .hero {
+
+            max-width: 780px;
+
+        }
+
+
+
+        .badge {
+
+            display: inline-block;
+
+            padding: 8px 17px;
+
+            border: 1px solid #e63946;
+
+            border-radius: 30px;
+
+            color: #ff6570;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 20px;
+
+            background: rgba(230, 57, 70, 0.08);
+
+        }
+
+
+
+        .hero h1 {
+
+            margin: 0;
+
+            font-size: 64px;
+
+            line-height: 1.05;
+
+            letter-spacing: 3px;
+
+            text-shadow:
+
+                0 5px 25px rgba(0, 0, 0, 0.7);
+
+        }
+
+
+        .hero h1 span {
+
+            color: #e63946;
+
+        }
+
+
+
+        /* DESCRIPTION */
+
+        .subtitle {
+
+            margin-top: 22px;
+
+            max-width: 650px;
+
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            color: #d4d8df;
+
+        }
+
+
+
+        /* BUTTON */
+
+        .buttons {
+
+            margin-top: 32px;
+
+        }
+
+
+        .primary-btn {
+
+            display: inline-block;
+
+            padding: 14px 25px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+            background: #e63946;
+
+            color: white;
+
+            box-shadow:
+
+                0 8px 25px rgba(230, 57, 70, 0.25);
+
+        }
+
+
+        .primary-btn:hover {
+
+            background: #ff4d5a;
+
+            transform: translateY(-3px);
+
+        }
+
+
+
+        /* DATABASE INFO */
+
+        .database-info {
+
+            margin-top: 55px;
+
+            display: flex;
+
+            gap: 18px;
+
+        }
+
+
+        .info-box {
+
+            min-width: 150px;
+
+            padding: 18px;
+
+            background: rgba(8, 12, 20, 0.72);
+
+            border: 1px solid rgba(255, 255, 255, 0.13);
+
+            border-radius: 12px;
+
+            backdrop-filter: blur(8px);
+
+        }
+
+
+        .info-number {
+
+            display: block;
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            color: #ff5964;
+
+        }
+
+
+        .info-text {
+
+            color: #b9c0ca;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+
+        /* FOOTER */
+
+        footer {
+
+            padding: 35px 20px 20px;
+
+            text-align: center;
+
+            background: rgba(4, 6, 10, 0.92);
+
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+        }
+
+
+        footer h2 {
+
+            margin-top: 0;
+
+            font-size: 21px;
+
+        }
+
+
+        footer p {
+
+            color: #b8bec8;
+
+            margin: 8px;
+
+        }
+
+
+        footer a {
+
+            color: #ff5964;
+
+        }
+
+
+        .copyright {
+
+            margin-top: 25px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+            color: #777f8b;
+
+            font-size: 13px;
+
+        }
+
+    </style>
 
 </head>
 
-<body style="background-image: url('am.png');">
-
-<div class="main-content">
-
-<h1>Avengers headquaters</h1>
-
-<a href="Avenger photos.html">Go to Page 2</a>
-
-<br><br>
-
-<h3>CLICK HERE TO VIEW AND DOWNLOAD MARVEL CHARACTER PHOTOS</h3>
-
-</div>
 
 
-<footer class="footer">
+<body>
 
-<hr>
 
-<h2>For Further Details</h2>
+    <!-- NAVIGATION -->
 
-<p><b>Created by:</b> Azhan Khan</p>
+    <nav>
 
-<p>
-    <b>📸 Instagram:</b>
-    <a href="https://www.instagram.com/azhan_exe/" target="_blank">
-        @azhan_exe
-    </a>
-</p>
 
-<p>
-    <b>📧 Email:</b>
-    <a href="mailto:azhanweb@outlook.com">
-        azhanweb@outlook.com
-    </a>
-</p>
+        <!-- CLICKABLE LOGO -->
 
-<hr>
+        <a href="index.html" class="logo">
 
-<p align="center">
-    © 2026 Azhan Khan | Avengers Website
-</p>
+            AVENGERS<span>DATABASE</span>
 
-</footer>
+        </a>
+
+
+        <div>
+
+
+            <a href="index.html">
+
+                HOME
+
+            </a>
+
+
+            <a href="Avenger photos.html">
+
+                CHARACTERS
+
+            </a>
+
+
+            <a href="Iron Man.html">
+
+                IRON MAN
+
+            </a>
+
+
+        </div>
+
+
+    </nav>
+
+
+
+    <!-- MAIN HERO -->
+
+    <main class="main-content">
+
+
+        <section class="hero">
+
+
+            <div class="badge">
+
+                MARVEL ARCHIVES • CLASSIFIED DATABASE
+
+            </div>
+
+
+
+            <h1>
+
+                AVENGERS<br>
+
+                <span>DATABASE</span>
+
+            </h1>
+
+
+
+            <p class="subtitle">
+
+                Explore the world's most powerful heroes,
+
+                discover their abilities, identities and stories,
+
+                and enter the archive of Earth's Mightiest Heroes.
+
+            </p>
+
+
+
+            <div class="buttons">
+
+
+                <a
+
+                    class="primary-btn"
+
+                    href="Avenger photos.html"
+
+                >
+
+                    Explore Characters →
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- DATABASE STATS -->
+
+            <div class="database-info">
+
+
+                <div class="info-box">
+
+
+                    <span class="info-number">
+
+                        01+
+
+                    </span>
+
+
+                    <span class="info-text">
+
+                        HERO PROFILES
+
+                    </span>
+
+
+                </div>
+
+
+
+                <div class="info-box">
+
+
+                    <span class="info-number">
+
+                        05
+
+                    </span>
+
+
+                    <span class="info-text">
+
+                        HERO CATEGORIES
+
+                    </span>
+
+
+                </div>
+
+
+
+                <div class="info-box">
+
+
+                    <span class="info-number">
+
+                        2026
+
+                    </span>
+
+
+                    <span class="info-text">
+
+                        DATABASE EDITION
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+
+        <h2>
+
+            For Further Details
+
+        </h2>
+
+
+
+        <p>
+
+            <b>Created by:</b>
+
+            Azhan Khan
+
+        </p>
+
+
+
+        <p>
+
+            📸 <b>Instagram:</b>
+
+
+            <a
+
+                href="https://www.instagram.com/azhan_exe/"
+
+                target="_blank"
+
+            >
+
+                @azhan_exe
+
+            </a>
+
+        </p>
+
+
+
+        <p>
+
+            📧 <b>Email:</b>
+
+
+            <a
+
+                href="mailto:azhanweb@outlook.com"
+
+            >
+
+                azhanweb@outlook.com
+
+            </a>
+
+        </p>
+
+
+
+        <div class="copyright">
+
+            © 2026 Azhan Khan | Avengers Database
+
+        </div>
+
+
+    </footer>
+
 
 </body>
 
