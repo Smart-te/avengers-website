@@ -1,34 +1,1117 @@
 <html>
-<body style="<body style="background-image: url('am.png')">
 
-<h1>Avengers Database</h1>
+<head>
 
-<br><br>
+    <title>Marvel Character Database</title>
 
-<a href="Iron Man.html">
-    <h2>IRON MAN</h2>
-</a>
+    <style>
 
-<br><br>
+        * {
+            box-sizing: border-box;
+        }
 
-<a href="Captain america.html">
-<h2>CAPTAIN AMERICA</h2>
-</a>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(5, 8, 14, 0.96),
+                    rgba(5, 8, 14, 0.98)
+                );
+
+            min-height: 100vh;
+        }
 
 
-<img src="C:\Users\Azhan\Pictures\am.png" width="200">
+        /* NAVBAR */
 
-<br><br>
+        nav {
+            height: 70px;
 
-<h2>DR. BRUCE BANNER</h2>
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-<br><br>
+            padding: 0 50px;
 
-<h2>THOR (GOD OF THUNDER)</h2>
+            background: rgba(8, 11, 18, 0.98);
 
-<br><br>
+            border-bottom: 1px solid #252b35;
 
-<h2>SPIDER MAN</h2>
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+        }
+
+
+        .logo {
+            font-size: 22px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+
+        .logo span {
+            color: #e63946;
+        }
+
+
+        nav a {
+            color: #dce1e8;
+
+            text-decoration: none;
+
+            margin-left: 28px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover {
+            color: #ff4d5a;
+        }
+
+
+        /* HEADER */
+
+        .header {
+            text-align: center;
+
+            padding: 70px 20px 45px;
+        }
+
+
+        .badge {
+            display: inline-block;
+
+            padding: 8px 18px;
+
+            border: 1px solid #e63946;
+
+            border-radius: 30px;
+
+            color: #ff5964;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+
+        .header h1 {
+            margin: 22px 0 10px;
+
+            font-size: 48px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .header h1 span {
+            color: #e63946;
+        }
+
+
+        .header p {
+            color: #9da5b1;
+
+            font-size: 16px;
+
+            max-width: 650px;
+
+            margin: auto;
+
+            line-height: 1.7;
+        }
+
+
+        /* SEARCH */
+
+        .search-box {
+            width: 80%;
+
+            max-width: 700px;
+
+            margin: 0 auto 50px;
+
+            padding: 17px 22px;
+
+            background: #111620;
+
+            border: 1px solid #2b3340;
+
+            border-radius: 10px;
+
+            color: #7f8997;
+
+            text-align: left;
+        }
+
+
+        .search-box input {
+            width: calc(100% - 30px);
+
+            background: transparent;
+
+            border: none;
+
+            outline: none;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        .search-box input::placeholder {
+            color: #7f8997;
+        }
+
+
+        /* NO RESULTS */
+
+        #noResults {
+            display: none;
+
+            text-align: center;
+
+            color: #9da5b1;
+
+            margin: -25px auto 40px;
+
+            font-size: 15px;
+        }
+
+
+        /* CHARACTER SECTIONS */
+
+        .section {
+            width: 88%;
+
+            max-width: 1200px;
+
+            margin: 0 auto 55px;
+        }
+
+
+        .section-title {
+            font-size: 22px;
+
+            margin-bottom: 22px;
+
+            padding-left: 15px;
+
+            border-left: 4px solid #e63946;
+        }
+
+
+        /* CHARACTER GRID */
+
+        .character-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+
+        /* CHARACTER CARD */
+
+        .character-card {
+            background:
+                linear-gradient(
+                    145deg,
+                    #151b25,
+                    #0d1118
+                );
+
+            border: 1px solid #252d39;
+
+            border-radius: 14px;
+
+            padding: 22px;
+
+            transition: 0.3s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .character-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background: #e63946;
+        }
+
+
+        .character-card:hover {
+            transform: translateY(-6px);
+
+            border-color: #e63946;
+
+            box-shadow:
+                0 15px 35px
+                rgba(230, 57, 70, 0.12);
+        }
+
+
+        .character-number {
+            color: #687383;
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .character-card h3 {
+            margin: 12px 0 5px;
+
+            font-size: 19px;
+        }
+
+
+        .real-name {
+            color: #8e98a6;
+
+            font-size: 13px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .view-btn {
+            display: inline-block;
+
+            padding: 9px 15px;
+
+            border-radius: 6px;
+
+            background: #e63946;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .view-btn:hover {
+            background: #ff4d5a;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 80px;
+
+            padding: 35px 20px 20px;
+
+            text-align: center;
+
+            background: #080b10;
+
+            border-top: 1px solid #252b35;
+        }
+
+
+        footer h2 {
+            font-size: 21px;
+        }
+
+
+        footer p {
+            color: #9da5b1;
+
+            margin: 8px;
+        }
+
+
+        footer a {
+            color: #ff5964;
+        }
+
+
+        .copyright {
+            margin-top: 25px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid #1d232c;
+
+            color: #626b78;
+
+            font-size: 13px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            AVENGERS<span>DATABASE</span>
+        </div>
+
+
+        <div>
+
+            <a href="index.html">
+                HOME
+            </a>
+
+            <a href="Avenger photos.html">
+                CHARACTERS
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- PAGE HEADER -->
+
+    <header class="header">
+
+        <div class="badge">
+            MARVEL CHARACTER ARCHIVE
+        </div>
+
+
+        <h1>
+            CHARACTER <span>DATABASE</span>
+        </h1>
+
+
+        <p>
+            Explore heroes, villains and legendary characters
+            from the Marvel Universe.
+        </p>
+
+    </header>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        🔎 &nbsp;
+
+        <input
+            type="text"
+            id="characterSearch"
+            placeholder="Search characters..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <div id="noResults">
+        No character found.
+    </div>
+
+
+
+    <!-- AVENGERS -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            The Avengers
+        </h2>
+
+
+        <div class="character-grid">
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #001
+                </div>
+
+                <h3>
+                    Iron Man
+                </h3>
+
+                <div class="real-name">
+                    Tony Stark
+                </div>
+
+                <a
+                    href="Iron Man.html"
+                    class="view-btn"
+                >
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #002
+                </div>
+
+                <h3>
+                    Captain America
+                </h3>
+
+                <div class="real-name">
+                    Steve Rogers
+                </div>
+
+                <a href="captain-america.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #003
+                </div>
+
+                <h3>
+                    Thor
+                </h3>
+
+                <div class="real-name">
+                    Thor Odinson
+                </div>
+
+                <a href="thor.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #004
+                </div>
+
+                <h3>
+                    Hulk
+                </h3>
+
+                <div class="real-name">
+                    Bruce Banner
+                </div>
+
+                <a href="hulk.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #005
+                </div>
+
+                <h3>
+                    Black Widow
+                </h3>
+
+                <div class="real-name">
+                    Natasha Romanoff
+                </div>
+
+                <a href="black-widow.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #006
+                </div>
+
+                <h3>
+                    Hawkeye
+                </h3>
+
+                <div class="real-name">
+                    Clint Barton
+                </div>
+
+                <a href="hawkeye.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #007
+                </div>
+
+                <h3>
+                    Spider-Man
+                </h3>
+
+                <div class="real-name">
+                    Peter Parker
+                </div>
+
+                <a href="spider-man.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #008
+                </div>
+
+                <h3>
+                    Doctor Strange
+                </h3>
+
+                <div class="real-name">
+                    Stephen Strange
+                </div>
+
+                <a href="doctor-strange.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- GUARDIANS -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Guardians & Cosmic Heroes
+        </h2>
+
+
+        <div class="character-grid">
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #009
+                </div>
+
+                <h3>
+                    Star-Lord
+                </h3>
+
+                <div class="real-name">
+                    Peter Quill
+                </div>
+
+                <a href="star-lord.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #010
+                </div>
+
+                <h3>
+                    Gamora
+                </h3>
+
+                <div class="real-name">
+                    Gamora
+                </div>
+
+                <a href="gamora.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #011
+                </div>
+
+                <h3>
+                    Rocket
+                </h3>
+
+                <div class="real-name">
+                    Rocket Raccoon
+                </div>
+
+                <a href="rocket.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+
+
+            <div class="character-card">
+
+                <div class="character-number">
+                    #012
+                </div>
+
+                <h3>
+                    Groot
+                </h3>
+
+                <div class="real-name">
+                    Groot
+                </div>
+
+                <a href="groot.html"
+                   class="view-btn">
+                    View Profile →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- OTHER HEROES -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Marvel Heroes
+        </h2>
+
+
+        <div class="character-grid">
+
+
+            <div class="character-card">
+                <div class="character-number">#013</div>
+                <h3>Black Panther</h3>
+                <div class="real-name">T'Challa</div>
+                <a href="black-panther.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#014</div>
+                <h3>Captain Marvel</h3>
+                <div class="real-name">Carol Danvers</div>
+                <a href="captain-marvel.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#015</div>
+                <h3>Ant-Man</h3>
+                <div class="real-name">Scott Lang</div>
+                <a href="ant-man.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#016</div>
+                <h3>Wasp</h3>
+                <div class="real-name">Hope van Dyne</div>
+                <a href="wasp.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#017</div>
+                <h3>Shang-Chi</h3>
+                <div class="real-name">Shang-Chi</div>
+                <a href="shang-chi.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#018</div>
+                <h3>Moon Knight</h3>
+                <div class="real-name">Marc Spector</div>
+                <a href="moon-knight.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#019</div>
+                <h3>Ms. Marvel</h3>
+                <div class="real-name">Kamala Khan</div>
+                <a href="ms-marvel.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#020</div>
+                <h3>Wolverine</h3>
+                <div class="real-name">Logan</div>
+                <a href="wolverine.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- VILLAINS -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Marvel Villains
+        </h2>
+
+
+        <div class="character-grid">
+
+
+            <div class="character-card">
+                <div class="character-number">#021</div>
+                <h3>Thanos</h3>
+                <div class="real-name">Thanos</div>
+                <a href="thanos.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#022</div>
+                <h3>Loki</h3>
+                <div class="real-name">Loki Laufeyson</div>
+                <a href="loki.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#023</div>
+                <h3>Ultron</h3>
+                <div class="real-name">Ultron</div>
+                <a href="ultron.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#024</div>
+                <h3>Green Goblin</h3>
+                <div class="real-name">Norman Osborn</div>
+                <a href="green-goblin.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#025</div>
+                <h3>Doctor Doom</h3>
+                <div class="real-name">Victor von Doom</div>
+                <a href="doctor-doom.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#026</div>
+                <h3>Red Skull</h3>
+                <div class="real-name">Johann Schmidt</div>
+                <a href="red-skull.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#027</div>
+                <h3>Killmonger</h3>
+                <div class="real-name">Erik Killmonger</div>
+                <a href="killmonger.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+
+            <div class="character-card">
+                <div class="character-number">#028</div>
+                <h3>Kingpin</h3>
+                <div class="real-name">Wilson Fisk</div>
+                <a href="kingpin.html" class="view-btn">
+                    View Profile →
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>
+            For Further Details
+        </h2>
+
+
+        <p>
+            <b>Created by:</b> Azhan Khan
+        </p>
+
+
+        <p>
+            📸 <b>Instagram:</b>
+
+            <a
+                href="https://www.instagram.com/azhan_exe/"
+                target="_blank"
+            >
+                @azhan_exe
+            </a>
+        </p>
+
+
+        <p>
+            📧 <b>Email:</b>
+
+            <a
+                href="mailto:azhanweb@outlook.com"
+            >
+                azhanweb@outlook.com
+            </a>
+        </p>
+
+
+        <div class="copyright">
+            © 2026 Azhan Khan | Avengers Database
+        </div>
+
+    </footer>
+
+
+
+    <!-- SEARCH JAVASCRIPT -->
+
+    <script>
+
+        const searchInput =
+            document.getElementById("characterSearch");
+
+        const characterCards =
+            document.querySelectorAll(".character-card");
+
+        const sections =
+            document.querySelectorAll(".section");
+
+        const noResults =
+            document.getElementById("noResults");
+
+
+        searchInput.addEventListener("input", function () {
+
+            const searchText =
+                this.value.trim().toLowerCase();
+
+            let foundCharacters = 0;
+
+
+            characterCards.forEach(function (card) {
+
+                const characterName =
+                    card.querySelector("h3")
+                    .textContent
+                    .toLowerCase();
+
+                const realName =
+                    card.querySelector(".real-name")
+                    .textContent
+                    .toLowerCase();
+
+
+                if (
+                    characterName.includes(searchText) ||
+                    realName.includes(searchText)
+                ) {
+
+                    card.style.display = "";
+
+                    foundCharacters++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            sections.forEach(function (section) {
+
+                const visibleCards =
+                    Array.from(
+                        section.querySelectorAll(".character-card")
+                    ).filter(function (card) {
+
+                        return card.style.display !== "none";
+
+                    });
+
+
+                if (
+                    searchText !== "" &&
+                    visibleCards.length === 0
+                ) {
+
+                    section.style.display = "none";
+
+                } else {
+
+                    section.style.display = "";
+
+                }
+
+            });
+
+
+            if (
+                searchText !== "" &&
+                foundCharacters === 0
+            ) {
+
+                noResults.style.display = "block";
+
+            } else {
+
+                noResults.style.display = "none";
+
+            }
+
+        });
+
+    </script>
+
 
 </body>
+
 </html>
