@@ -1,962 +1,121 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Avengers Database</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-        html,
-        body {
-            margin: 0;
-            min-height: 100%;
-        }
-
-
-        body {
-
-            min-height: 100vh;
-
-            font-family: Arial, Helvetica, sans-serif;
-
-            color: white;
-
-            background-image:
-
-                linear-gradient(
-                    rgba(0, 0, 0, 0.62),
-                    rgba(0, 0, 0, 0.78)
-                ),
-
-                url('am.png');
-
-            background-size: cover;
-
-            background-position: center;
-
-            background-repeat: no-repeat;
-
-            background-attachment: fixed;
-
-            display: flex;
-
-            flex-direction: column;
-
-        }
-
-
-
-        /* NAVBAR */
-
-        nav {
-
-            min-height: 70px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 0 50px;
-
-            background: rgba(5, 8, 14, 0.82);
-
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-
-            backdrop-filter: blur(8px);
-
-        }
-
-
-
-        /* CLICKABLE LOGO */
-
-        .logo {
-
-            font-size: 22px;
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            color: white;
-
-            text-decoration: none;
-
-            transition: 0.3s;
-
-            white-space: nowrap;
-
-        }
-
-
-        .logo span {
-
-            color: #e63946;
-
-        }
-
-
-        .logo:hover {
-
-            opacity: 0.85;
-
-        }
-
-
-
-        /* NAV LINKS */
-
-        nav a {
-
-            color: white;
-
-            text-decoration: none;
-
-            margin-left: 28px;
-
-            font-size: 14px;
-
-            font-weight: bold;
-
-            transition: 0.3s;
-
-        }
-
-
-        nav a:hover {
-
-            color: #ff4d5a;
-
-        }
-
-
-
-        /* MAIN CONTENT */
-
-        .main-content {
-
-            flex: 1;
-
-            display: flex;
-
-            align-items: center;
-
-            padding: 80px 8%;
-
-        }
-
-
-
-        /* HERO */
-
-        .hero {
-
-            max-width: 780px;
-
-            width: 100%;
-
-        }
-
-
-
-        .badge {
-
-            display: inline-block;
-
-            padding: 8px 17px;
-
-            border: 1px solid #e63946;
-
-            border-radius: 30px;
-
-            color: #ff6570;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 20px;
-
-            background: rgba(230, 57, 70, 0.08);
-
-        }
-
-
-
-        .hero h1 {
-
-            margin: 0;
-
-            font-size: 64px;
-
-            line-height: 1.05;
-
-            letter-spacing: 3px;
-
-            text-shadow:
-
-                0 5px 25px rgba(0, 0, 0, 0.7);
-
-        }
-
-
-        .hero h1 span {
-
-            color: #e63946;
-
-        }
-
-
-
-        /* DESCRIPTION */
-
-        .subtitle {
-
-            margin-top: 22px;
-
-            max-width: 650px;
-
-            font-size: 19px;
-
-            line-height: 1.7;
-
-            color: #d4d8df;
-
-        }
-
-
-
-        /* BUTTON */
-
-        .buttons {
-
-            margin-top: 32px;
-
-        }
-
-
-        .primary-btn {
-
-            display: inline-block;
-
-            padding: 14px 25px;
-
-            border-radius: 8px;
-
-            text-decoration: none;
-
-            font-weight: bold;
-
-            transition: 0.3s;
-
-            background: #e63946;
-
-            color: white;
-
-            box-shadow:
-
-                0 8px 25px rgba(230, 57, 70, 0.25);
-
-        }
-
-
-        .primary-btn:hover {
-
-            background: #ff4d5a;
-
-            transform: translateY(-3px);
-
-        }
-
-
-
-        /* DATABASE INFO */
-
-        .database-info {
-
-            margin-top: 55px;
-
-            display: flex;
-
-            gap: 18px;
-
-        }
-
-
-        .info-box {
-
-            min-width: 150px;
-
-            padding: 18px;
-
-            background: rgba(8, 12, 20, 0.72);
-
-            border: 1px solid rgba(255, 255, 255, 0.13);
-
-            border-radius: 12px;
-
-            backdrop-filter: blur(8px);
-
-        }
-
-
-        .info-number {
-
-            display: block;
-
-            font-size: 25px;
-
-            font-weight: bold;
-
-            color: #ff5964;
-
-        }
-
-
-        .info-text {
-
-            color: #b9c0ca;
-
-            font-size: 12px;
-
-            margin-top: 5px;
-
-            letter-spacing: 1px;
-
-        }
-
-
-
-        /* FOOTER */
-
-        footer {
-
-            padding: 35px 20px 20px;
-
-            text-align: center;
-
-            background: rgba(4, 6, 10, 0.92);
-
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-
-        }
-
-
-        footer h2 {
-
-            margin-top: 0;
-
-            font-size: 21px;
-
-        }
-
-
-        footer p {
-
-            color: #b8bec8;
-
-            margin: 8px;
-
-        }
-
-
-        footer a {
-
-            color: #ff5964;
-
-        }
-
-
-        .copyright {
-
-            margin-top: 25px;
-
-            padding-top: 18px;
-
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-            color: #777f8b;
-
-            font-size: 13px;
-
-        }
-
-
-
-        /* =========================================
-           TABLET RESPONSIVE
-           PC DESIGN IS NOT AFFECTED
-        ========================================= */
-
-        @media (max-width: 900px) {
-
-            nav {
-                padding: 0 30px;
-            }
-
-            .main-content {
-                padding: 70px 6%;
-            }
-
-            .hero h1 {
-                font-size: 56px;
-            }
-
-            .subtitle {
-                font-size: 18px;
-            }
-
-            .database-info {
-                flex-wrap: wrap;
-            }
-
-        }
-
-
-
-        /* =========================================
-           MOBILE RESPONSIVE
-        ========================================= */
-
-        @media (max-width: 600px) {
-
-            body {
-                background-attachment: scroll;
-            }
-
-
-            /* MOBILE NAVBAR */
-
-            nav {
-
-                min-height: 85px;
-
-                padding: 15px 20px;
-
-                flex-direction: column;
-
-                justify-content: center;
-
-                gap: 12px;
-
-            }
-
-
-            .logo {
-
-                font-size: 19px;
-
-                letter-spacing: 1.5px;
-
-            }
-
-
-            nav div {
-
-                display: flex;
-
-                justify-content: center;
-
-                align-items: center;
-
-                flex-wrap: wrap;
-
-                gap: 18px;
-
-            }
-
-
-            nav a {
-
-                margin-left: 0;
-
-                font-size: 12px;
-
-                letter-spacing: 0.5px;
-
-            }
-
-
-
-            /* MAIN */
-
-            .main-content {
-
-                padding: 55px 20px;
-
-                align-items: flex-start;
-
-            }
-
-
-            .hero {
-
-                width: 100%;
-
-            }
-
-
-
-            /* BADGE */
-
-            .badge {
-
-                padding: 7px 12px;
-
-                font-size: 9px;
-
-                letter-spacing: 1.2px;
-
-                margin-bottom: 18px;
-
-                max-width: 100%;
-
-                text-align: center;
-
-            }
-
-
-
-            /* TITLE */
-
-            .hero h1 {
-
-                font-size: 40px;
-
-                line-height: 1.08;
-
-                letter-spacing: 2px;
-
-            }
-
-
-
-            /* DESCRIPTION */
-
-            .subtitle {
-
-                margin-top: 18px;
-
-                font-size: 16px;
-
-                line-height: 1.6;
-
-                max-width: 100%;
-
-            }
-
-
-
-            /* BUTTON */
-
-            .buttons {
-
-                margin-top: 27px;
-
-            }
-
-
-            .primary-btn {
-
-                width: 100%;
-
-                text-align: center;
-
-                padding: 14px 18px;
-
-                font-size: 14px;
-
-            }
-
-
-
-            /* DATABASE STATS */
-
-            .database-info {
-
-                margin-top: 40px;
-
-                flex-direction: column;
-
-                gap: 12px;
-
-                width: 100%;
-
-            }
-
-
-            .info-box {
-
-                width: 100%;
-
-                min-width: 0;
-
-                padding: 16px;
-
-            }
-
-
-            .info-number {
-
-                font-size: 23px;
-
-            }
-
-
-
-            /* FOOTER */
-
-            footer {
-
-                padding: 30px 15px 20px;
-
-            }
-
-
-            footer h2 {
-
-                font-size: 19px;
-
-            }
-
-
-            footer p {
-
-                font-size: 14px;
-
-                line-height: 1.5;
-
-                word-break: break-word;
-
-            }
-
-
-            .copyright {
-
-                font-size: 12px;
-
-                line-height: 1.5;
-
-            }
-
-        }
-
-
-
-        /* VERY SMALL PHONES */
-
-        @media (max-width: 380px) {
-
-            .logo {
-
-                font-size: 17px;
-
-            }
-
-
-            nav a {
-
-                font-size: 11px;
-
-            }
-
-
-            nav div {
-
-                gap: 14px;
-
-            }
-
-
-            .hero h1 {
-
-                font-size: 34px;
-
-            }
-
-
-            .subtitle {
-
-                font-size: 15px;
-
-            }
-
-
-            .badge {
-
-                font-size: 8px;
-
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07090f">
+<title>Avengers Database | Classified Archive</title>
+<style>
+:root{--red:#ff3048;--ice:#c9f5ff;--line:rgba(255,255,255,.13);--mx:0deg;--my:0deg;--px:0px;--py:0px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:#07090f;color:#f7f8fb;font-family:Inter,Segoe UI,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit}#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.bg{position:fixed;inset:0;z-index:-4;background:linear-gradient(90deg,rgba(3,5,10,.94),rgba(3,5,10,.7) 56%,rgba(3,5,10,.66)),url('am.png') center/cover no-repeat;transform:scale(1.03)}
+.ambient{position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(ellipse at 75% 43%,rgba(176,16,42,.23),transparent 38%),radial-gradient(ellipse at 15% 20%,rgba(17,108,144,.13),transparent 30%)}
+.scan{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.08;background:repeating-linear-gradient(to bottom,transparent 0 3px,rgba(255,255,255,.08) 4px,transparent 5px)}
+nav{position:relative;z-index:10;min-height:76px;padding:0 clamp(18px,5.5vw,84px);display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(5,7,12,.68);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:900;font-size:clamp(15px,1.7vw,21px);letter-spacing:1.6px;white-space:nowrap}
+.logo-mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid #ff5268;border-radius:9px;background:linear-gradient(145deg,rgba(255,48,72,.35),transparent);box-shadow:0 0 24px #ff304833;transform:rotate(-8deg)}
+.logo .db{color:var(--red)}.navlinks{display:flex;gap:clamp(15px,2.5vw,34px)}.navlinks a{position:relative;text-decoration:none;color:#d9dfeb;font-size:11px;font-weight:900;letter-spacing:1.5px;padding:12px 0;transition:.25s}
+.navlinks a:after{content:"";position:absolute;bottom:4px;left:0;width:0;height:2px;background:var(--red);transition:.25s}.navlinks a:hover{color:white}.navlinks a:hover:after{width:100%}
+.status{display:flex;align-items:center;gap:8px;color:#9debc4;font-size:9px;letter-spacing:1.1px;font-weight:900}.dot{width:7px;height:7px;border-radius:50%;background:#62f4aa;box-shadow:0 0 12px #62f4aa;animation:pulse 1.8s infinite}
+.hero{min-height:min(790px,calc(100vh - 76px));padding:65px clamp(20px,8vw,130px) 55px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);align-items:center;gap:28px;perspective:1400px}
+.copy{position:relative;z-index:2;max-width:690px;animation:rise .9s both}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:9px 13px;border:1px solid #ff304866;border-radius:4px;background:#ff304811;color:#ff8b98;font-size:10px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase}
+.eyebrow:before{content:"";width:7px;height:7px;background:var(--red);box-shadow:0 0 13px var(--red);transform:rotate(45deg)}
+h1{margin:24px 0 18px;font-size:clamp(48px,7.4vw,104px);line-height:.88;letter-spacing:-.065em;font-weight:1000;text-transform:uppercase}
+h1 .outline{display:block;margin-top:13px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.8)}h1 .red{color:var(--red);-webkit-text-stroke:0;text-shadow:0 0 38px #ff304855}
+.lede{max-width:560px;color:#c0c7d4;font-size:clamp(15px,1.4vw,18px);line-height:1.8;margin:24px 0 0}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}.cta{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 20px;min-height:51px;text-decoration:none;text-transform:uppercase;font-size:10px;font-weight:900;letter-spacing:1.2px;border-radius:5px;transition:transform .25s,box-shadow .25s}
+.cta:before{content:"";position:absolute;z-index:-1;inset:0;transform:translateX(-120%);background:linear-gradient(100deg,transparent,#ffffff44,transparent);transition:transform .6s}.cta:hover:before{transform:translateX(120%)}.cta:hover{transform:translateY(-4px)}
+.primary{background:linear-gradient(115deg,#ff3048,#bd0c2a);border:1px solid #ff6677;box-shadow:0 10px 35px #ff1e3b38}.primary:hover{box-shadow:0 15px 42px #ff1e3b60}
+.secondary{background:#ffffff0b;border:1px solid #ffffff33;color:#e8edf5}.secondary:hover{border-color:#ffffff88}
+.stats{display:flex;margin-top:44px;padding-top:23px;border-top:1px solid var(--line);max-width:590px}.stat{padding:0 clamp(13px,2.2vw,27px);border-right:1px solid var(--line);flex:1}.stat:first-child{padding-left:0}.stat:last-child{border:0}
+.stat strong{display:block;font-size:clamp(22px,2.8vw,32px);font-weight:950;letter-spacing:-1px}.stat em{font-style:normal;color:var(--red)}.stat span{display:block;margin-top:7px;color:#8792a4;font-size:9px;letter-spacing:1.3px;font-weight:800}
+.visual{position:relative;min-height:510px;display:grid;place-items:center;perspective:1200px;animation:fade 1.2s .2s both}
+.halo{position:absolute;width:min(38vw,470px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#ff203a33,#ff203a0f 40%,transparent 70%);filter:blur(7px);animation:halo 4s infinite}
+.orbit{position:absolute;width:min(37vw,440px);aspect-ratio:1;border:1px solid #ffffff29;border-radius:50%;transform:rotateX(68deg) rotateZ(-25deg);box-shadow:0 0 35px #ff304817;animation:orbit 22s linear infinite}
+.orbit:before,.orbit:after{content:"";position:absolute;inset:12%;border:1px solid #ff304855;border-radius:50%}.orbit:after{inset:25%;border-color:#c9f5ff30}.orbit.two{width:min(32vw,375px);transform:rotateX(72deg) rotateZ(40deg);animation:orbit2 17s linear infinite;border-color:#c9f5ff33}
+.orbit-dot{position:absolute;top:8%;left:17%;width:9px;height:9px;border-radius:50%;background:var(--ice);box-shadow:0 0 18px var(--ice)}
+.reactor-card{position:relative;width:min(33vw,360px);min-width:280px;aspect-ratio:.79;transform-style:preserve-3d;transform:rotateX(calc(var(--my)*-.55)) rotateY(calc(var(--mx)*.7)) translate3d(var(--px),var(--py),0);transition:transform .16s ease-out;filter:drop-shadow(0 30px 38px #0009)}
+.card{position:absolute;inset:8px;overflow:hidden;clip-path:polygon(14% 0,86% 0,100% 12%,100% 88%,86% 100%,14% 100%,0 88%,0 12%);background:radial-gradient(ellipse at 50% 37%,#8814275e,transparent 48%),linear-gradient(155deg,#161d2af2,#05080ffa);border:1px solid #ffffff29;transform:translateZ(14px)}
+.card:before{content:"";position:absolute;inset:0;opacity:.32;background-image:linear-gradient(#ffffff0d 1px,transparent 1px),linear-gradient(90deg,#ffffff0d 1px,transparent 1px);background-size:23px 23px}
+.cardtop{position:absolute;top:23px;left:22px;right:22px;display:flex;justify-content:space-between;color:#9ba8b9;font-size:8px;font-weight:900;letter-spacing:1.4px;transform:translateZ(28px)}.cardtop b{color:#ff6475}
+.reactor{position:absolute;top:45%;left:50%;width:190px;max-width:66%;aspect-ratio:1;transform:translate(-50%,-50%) translateZ(45px);display:grid;place-items:center;filter:drop-shadow(0 0 22px #ff253e59)}
+.ring{position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(#ff3048cc 0deg 1deg,transparent 1deg 12deg);mask:radial-gradient(circle,transparent 57%,#000 58% 61%,transparent 62%);animation:spin 16s linear infinite}
+.ring.r2{inset:11%;background:repeating-conic-gradient(#c9f5ffbb 0deg 1deg,transparent 1deg 18deg);mask:radial-gradient(circle,transparent 62%,#000 63% 66%,transparent 67%);animation:spin 10s linear infinite reverse}
+.ring.r3{inset:23%;border:1px dashed #ff3048dd;mask:none;background:transparent;animation:spin 24s linear infinite}
+.core{width:37%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff 0%,#c9f5ff 10%,#63cbe9 27%,#ff344d 48%,#7b0a20 72%,#080b12 75%);box-shadow:0 0 14px #ff3048,0 0 38px #ff3048cc,inset 0 0 13px #ffffffcc;animation:core 2.7s ease-in-out infinite}
+.cross{position:absolute;width:120%;height:1px;background:linear-gradient(90deg,transparent,#c9f5ff99,transparent);transform:rotate(45deg)}.cross:after{content:"";position:absolute;inset:0;transform:rotate(90deg);background:inherit}
+.readout{position:absolute;left:24px;right:24px;bottom:27px;transform:translateZ(35px)}.label{font-size:8px;letter-spacing:2px;color:#9ba8b9;font-weight:900}.readout h2{font-size:clamp(18px,2.1vw,24px);margin:8px 0 0;letter-spacing:1px}.readout h2 span{color:var(--red)}
+.load{height:3px;margin-top:14px;background:#ffffff1a;overflow:hidden}.load span{display:block;height:100%;width:76%;background:linear-gradient(90deg,var(--red,#ff3048),#ff9da8);box-shadow:0 0 12px var(--red);animation:loading 3s ease-in-out infinite alternate}
+.readfoot{display:flex;justify-content:space-between;margin-top:12px;color:#8390a2;font-size:8px;letter-spacing:1px}.readfoot b{color:#83f5c1}
+.chip{position:absolute;z-index:3;padding:11px 13px;background:#070b13cc;border:1px solid #ffffff2b;backdrop-filter:blur(12px);box-shadow:0 15px 35px #0004;border-radius:7px;font-size:8px;letter-spacing:.8px;animation:float 5s ease-in-out infinite}
+.chip b{display:block;color:#fff;font-size:10px;margin-bottom:5px}.chip span{color:#96a4b7}.chip.a{top:17%;right:-1%}.chip.b{bottom:15%;left:-3%;animation-delay:-2.4s}.chip.c{top:52%;right:-6%;animation-delay:-1.3s}
+.crosshair{position:absolute;width:22px;height:22px;border:1px solid #c9f5ff99;border-radius:50%;right:12%;top:12%}.crosshair:before,.crosshair:after{content:"";position:absolute;background:#c9f5ff99}.crosshair:before{width:34px;height:1px;left:-7px;top:10px}.crosshair:after{height:34px;width:1px;left:10px;top:-7px}
+.side{position:absolute;left:0;top:50%;writing-mode:vertical-rl;transform:rotate(180deg) translateY(50%);color:#ffffff49;font-size:8px;font-weight:900;letter-spacing:3px}
+.scroll{display:flex;align-items:center;justify-content:center;gap:12px;padding:0 20px 27px;color:#6e798a;font-size:9px;letter-spacing:2px;font-weight:900}.scroll i{display:block;width:42px;height:1px;background:linear-gradient(90deg,var(--red),transparent)}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:0 clamp(20px,8vw,130px) 70px;border:1px solid var(--line);background:var(--line);overflow:hidden;border-radius:8px}
+.item{min-height:98px;padding:23px 19px;background:#070a11e8;transition:background .25s}.item:hover{background:#ff304817}.item small{display:block;color:#8793a5;font-size:9px;font-weight:900;letter-spacing:1.5px}.item strong{display:block;margin-top:10px;font-size:14px}.item strong span{color:var(--red)}
+footer{position:relative;z-index:1;text-align:center;padding:36px 20px 22px;background:#04060ae8;border-top:1px solid var(--line);backdrop-filter:blur(16px)}
+footer h2{margin:0 0 14px;font-size:17px;letter-spacing:1px}footer p{margin:9px;color:#aab4c5;font-size:13px;line-height:1.7}footer a{color:#ff6678;text-decoration:none}footer a:hover{text-decoration:underline}
+.copyright{margin:25px auto 0;padding-top:18px;border-top:1px solid #ffffff17;max-width:800px;color:#6e7888;font-size:11px}
+.reveal{opacity:0;transform:translateY(22px);transition:.7s}.reveal.visible{opacity:1;transform:none}
+@keyframes pulse{50%{opacity:.35}}@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes halo{50%{transform:scale(1.12);opacity:.7}}
+@keyframes orbit{to{transform:rotateX(68deg) rotateZ(335deg)}}@keyframes orbit2{to{transform:rotateX(72deg) rotateZ(400deg)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes core{50%{box-shadow:0 0 24px #ff3048,0 0 58px #ff3048f2,inset 0 0 17px white;transform:scale(1.06)}}@keyframes loading{to{width:94%}}@keyframes float{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@media(max-width:980px){.hero{grid-template-columns:1fr minmax(300px,.8fr);padding-left:5vw;padding-right:5vw;gap:10px}.visual{min-height:450px}.reactor-card{min-width:255px;width:min(36vw,330px)}.chip.c{right:-2%}.strip{margin-left:5vw;margin-right:5vw}}
+@media(max-width:720px){nav{min-height:72px;padding:12px 18px;flex-wrap:wrap}.logo{font-size:15px;letter-spacing:1px}.logo-mark{width:29px;height:29px}.navlinks{gap:16px}.navlinks a{font-size:9px;letter-spacing:1px}.status{display:none}
+.hero{grid-template-columns:1fr;padding:53px 22px 34px;gap:5px;min-height:auto}.hero h1{font-size:clamp(51px,12vw,82px)}.lede{font-size:15px;line-height:1.75}.stats{margin-top:34px}.stat{padding:0 13px}.stat strong{font-size:23px}.stat span{font-size:8px;letter-spacing:.8px}
+.visual{min-height:430px;margin-top:6px}.reactor-card{width:280px;min-width:0}.orbit{width:325px}.orbit.two{width:278px}.halo{width:335px}.chip.a{right:3%;top:12%}.chip.b{left:2%;bottom:11%}.chip.c{right:1%;top:55%}.side{display:none}
+.strip{grid-template-columns:repeat(2,1fr);margin:10px 18px 45px}.item{min-height:86px;padding:17px 14px}}
+@media(max-width:420px){nav{gap:10px}.logo{font-size:13px}.navlinks{gap:11px}.navlinks a{font-size:8px}.hero{padding:43px 18px 25px}.eyebrow{font-size:8px;letter-spacing:1px}.hero h1{font-size:clamp(42px,12vw,58px)}.actions{gap:10px}.cta{width:100%;min-height:48px}.stats{gap:0}.stat{padding:0 8px}.stat strong{font-size:20px}.stat span{font-size:7px}.visual{min-height:370px}.reactor-card{width:245px}.orbit{width:280px}.orbit.two{width:235px}.halo{width:275px}.chip{padding:8px 9px}.chip b{font-size:9px}.chip.c{right:-1%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
 </head>
-
-
-
 <body>
-
-
-    <!-- NAVIGATION -->
-
-    <nav>
-
-
-        <!-- CLICKABLE LOGO -->
-
-        <a href="index.html" class="logo">
-
-            AVENGERS<span>DATABASE</span>
-
-        </a>
-
-
-        <div>
-
-
-            <a href="index.html">
-
-                HOME
-
-            </a>
-
-
-            <a href="Avenger photos.html">
-
-                CHARACTERS
-
-            </a>
-
-        </div>
-
-
-    </nav>
-
-
-
-    <!-- MAIN HERO -->
-
-    <main class="main-content">
-
-
-        <section class="hero">
-
-
-            <div class="badge">
-
-                MARVEL ARCHIVES • CLASSIFIED DATABASE
-
-            </div>
-
-
-
-            <h1>
-
-                AVENGERS<br>
-
-                <span>DATABASE</span>
-
-            </h1>
-
-
-
-            <p class="subtitle">
-
-                Explore the world's most powerful heroes,
-
-                discover their abilities, identities and stories,
-
-                and enter the archive of Earth's Mightiest Heroes.
-
-            </p>
-
-
-
-            <div class="buttons">
-
-
-                <a
-
-                    class="primary-btn"
-
-                    href="Avenger photos.html"
-
-                >
-
-                    Explore Characters →
-
-                </a>
-
-
-            </div>
-
-
-
-            <!-- DATABASE STATS -->
-
-            <div class="database-info">
-
-
-                <div class="info-box">
-
-
-                    <span class="info-number">
-
-                        28+
-
-                    </span>
-
-
-                    <span class="info-text">
-
-                        HERO PROFILES
-
-                    </span>
-
-
-                </div>
-
-
-
-                <div class="info-box">
-
-
-                    <span class="info-number">
-
-                        05
-
-                    </span>
-
-
-                    <span class="info-text">
-
-                        HERO CATEGORIES
-
-                    </span>
-
-
-                </div>
-
-
-
-                <div class="info-box">
-
-
-                    <span class="info-number">
-
-                        2026
-
-                    </span>
-
-
-                    <span class="info-text">
-
-                        DATABASE EDITION
-
-                    </span>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-
-        <h2>
-
-            For Further Details
-
-        </h2>
-
-
-
-        <p>
-
-            <b>Created by:</b>
-
-            Azhan Khan
-
-        </p>
-
-
-
-        <p>
-
-            📸 <b>Instagram:</b>
-
-
-            <a
-
-                href="https://www.instagram.com/azhan_exe/"
-
-                target="_blank"
-
-            >
-
-                @azhan_exe
-
-            </a>
-
-        </p>
-
-
-
-        <p>
-
-            📧 <b>Email:</b>
-
-
-            <a
-
-                href="mailto:azhanweb@outlook.com"
-
-            >
-
-                azhanweb@outlook.com
-
-            </a>
-
-        </p>
-
-
-
-        <div class="copyright">
-
-            © 2026 Azhan Khan | Avengers Database
-
-        </div>
-
-
-    </footer>
-
-
-</body>
-
-</html>
+<div class="bg" aria-hidden="true"></div><div class="ambient" aria-hidden="true"></div><canvas id="stars" aria-hidden="true"></canvas><div class="scan" aria-hidden="true"></div>
+<nav>
+<a href="index.html" class="logo" aria-label="Avengers Database home"><span class="logo-mark">A</span><span>AVENGERS<span class="db">DATABASE</span></span></a>
+<div class="navlinks"><a href="index.html">HOME</a><a href="Avenger photos.html">CHARACTERS ↗</a></div>
+<div class="status"><span class="dot"></span> ARCHIVE ONLINE</div>
+</nav>
+<main>
+<section class="hero">
+<div class="copy">
+<div class="eyebrow">Marvel Archives <span>•</span> Classified Database</div>
+<h1>AVENGERS<span class="outline"><span class="red">DATABASE</span></span></h1>
+<p class="lede">Earth's Mightiest Heroes. Their abilities. Their identities. Their stories. Enter a cinematic archive built for those who want to explore the legends behind the universe.</p>
+<div class="actions"><a class="cta primary" href="Avenger photos.html">Explore the archive <span>↗</span></a><a class="cta secondary" href="#database-info">Access intelligence <span>↓</span></a></div>
+<div class="stats" id="database-info">
+<div class="stat"><strong>28<em>+</em></strong><span>HERO PROFILES</span></div><div class="stat"><strong>05</strong><span>HERO CATEGORIES</span></div><div class="stat"><strong>2026</strong><span>DATABASE EDITION</span></div>
+</div>
+</div>
+<div class="visual" id="visual">
+<div class="side">STARK INDUSTRIES • SECURE ACCESS</div><div class="halo"></div><div class="orbit"><span class="orbit-dot"></span></div><div class="orbit two"></div><div class="crosshair"></div>
+<div class="reactor-card" id="reactorCard"><div class="card">
+<div class="cardtop"><span>AVENGERS / INTEL</span><b>SECURE ◈ 01</b></div>
+<div class="reactor"><div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div><div class="cross"></div><div class="core"></div></div>
+<div class="readout"><div class="label">POWER SOURCE // ONLINE</div><h2>ARC <span>REACTOR</span></h2><div class="load"><span></span></div><div class="readfoot"><span>ENERGY OUTPUT</span><b>STABLE 76%</b></div></div>
+</div></div>
+<div class="chip a"><b>◈ SYSTEM STATUS</b><span>ALL SYSTEMS NOMINAL</span></div><div class="chip b"><b>CLASSIFIED // 001</b><span>STARK TECH ARCHIVE</span></div><div class="chip c"><b>LIVE SCAN</b><span>IDENTITY: RESTRICTED</span></div>
+</div>
+</section>
+<div class="scroll"><i></i> SCROLL TO EXPLORE <i></i></div>
+<section class="strip reveal" aria-label="Database highlights">
+<div class="item"><small>01 / HEROES</small><strong>Earth's <span>defenders</span></strong></div><div class="item"><small>02 / TECHNOLOGY</small><strong>Beyond human <span>limits</span></strong></div><div class="item"><small>03 / CLASSIFIED</small><strong>Secrets & <span>identities</span></strong></div><div class="item"><small>04 / THE ARCHIVE</small><strong>Legends <span>live on</span></strong></div>
+</section>
+</main>
+<footer><h2>AVENGERS DATABASE <span style="color:#ff3048">/</span> CONTACT</h2>
+<p><b>Created by:</b> Azhan Khan</p>
+<p>📸 <b>Instagram:</b> <a href="https://www.instagram.com/azhan_exe/" target="_blank" rel="noopener noreferrer">@azhan_exe</a></p>
+<p>📧 <b>Email:</b> <a href="mailto:azhanweb@outlook.com">azhanweb@outlook.com</a></p>
+<div class="copyright">© 2026 Azhan Khan | Avengers Database · Fan-made, informational project</div></footer>
+<script>
+(()=>{const root=document.documentElement,visual=document.getElementById('visual'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches){visual.addEventListener('pointermove',e=>{const r=visual.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;root.style.setProperty('--mx',((x-.5)*18).toFixed(2)+'deg');root.style.setProperty('--my',((y-.5)*18).toFixed(2)+'deg');root.style.setProperty('--px',((x-.5)*8).toFixed(2)+'px');root.style.setProperty('--py',((y-.5)*8).toFixed(2)+'px')});visual.addEventListener('pointerleave',()=>['--mx','--my','--px','--py'].forEach((v,i)=>root.style.setProperty(v,['0deg','0deg','0px','0px'][i])))}
+const c=document.getElementById('stars'),ctx=c.getContext('2d');let w=0,h=0,stars=[],raf;
+function setup(){let d=Math.min(devicePixelRatio||1,1.5);w=innerWidth;h=innerHeight;c.width=w*d;c.height=h*d;c.style.width=w+'px';c.style.height=h+'px';ctx.setTransform(d,0,0,d,0,0);stars=Array.from({length:Math.min(105,Math.floor(w*h/11000))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.2+.2,a:Math.random()*.5+.12,s:(Math.random()*.18+.035)*(Math.random()>.5?1:-1)}))}
+function draw(){ctx.clearRect(0,0,w,h);for(const s of stars){s.y-=s.s;if(s.y<0)s.y=h;if(s.y>h)s.y=0;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(220,235,255,${s.a})`;ctx.fill()}if(!reduce)raf=requestAnimationFrame(draw)}
+setup();draw();addEventListener('resize',()=>{cancelAnimationFrame(raf);setup();draw()},{passive:true});
+const items=document.querySelectorAll('.reveal');if('IntersectionObserver'in window&&!reduce){const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ob.unobserve(e.target)}}),{threshold:.12});items.forEach(x=>ob.observe(x))}else items.forEach(x=>x.classList.add('visible'));
+})();
+</script>
+</body></html>
