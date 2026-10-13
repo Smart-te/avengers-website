@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#07090f">
+<meta name="description" content="Explore superhero identities, abilities, and stories in the Avengers Database fan-made archive.">
 <title>Avengers Database | Classified Archive</title>
 <style>
 :root{--red:#ff3048;--ice:#c9f5ff;--line:rgba(255,255,255,.13);--mx:0deg;--my:0deg;--px:0px;--py:0px}
@@ -14,7 +16,7 @@ a{color:inherit}#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-2;
 nav{position:relative;z-index:10;min-height:76px;padding:0 clamp(18px,5.5vw,84px);display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(5,7,12,.68);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:900;font-size:clamp(15px,1.7vw,21px);letter-spacing:1.6px;white-space:nowrap}
 .logo-mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid #ff5268;border-radius:9px;background:linear-gradient(145deg,rgba(255,48,72,.35),transparent);box-shadow:0 0 24px #ff304833;transform:rotate(-8deg)}
-.logo .db{color:var(--red)}.navlinks{display:flex;gap:clamp(15px,2.5vw,34px)}.navlinks a{position:relative;text-decoration:none;color:#d9dfeb;font-size:11px;font-weight:900;letter-spacing:1.5px;padding:12px 0;transition:.25s}
+.logo .db{color:var(--red)}.navlinks{display:flex;gap:clamp(12px,2.5vw,34px);flex-wrap:wrap}.navlinks a{position:relative;text-decoration:none;color:#d9dfeb;font-size:11px;font-weight:900;letter-spacing:1.2px;padding:12px 0;transition:.25s}
 .navlinks a:after{content:"";position:absolute;bottom:4px;left:0;width:0;height:2px;background:var(--red);transition:.25s}.navlinks a:hover{color:white}.navlinks a:hover:after{width:100%}
 .status{display:flex;align-items:center;gap:8px;color:#9debc4;font-size:9px;letter-spacing:1.1px;font-weight:900}.dot{width:7px;height:7px;border-radius:50%;background:#62f4aa;box-shadow:0 0 12px #62f4aa;animation:pulse 1.8s infinite}
 .hero{min-height:min(790px,calc(100vh - 76px));padding:65px clamp(20px,8vw,130px) 55px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);align-items:center;gap:28px;perspective:1400px}
@@ -46,7 +48,7 @@ h1 .outline{display:block;margin-top:13px;color:transparent;-webkit-text-stroke:
 .core{width:37%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff 0%,#c9f5ff 10%,#63cbe9 27%,#ff344d 48%,#7b0a20 72%,#080b12 75%);box-shadow:0 0 14px #ff3048,0 0 38px #ff3048cc,inset 0 0 13px #ffffffcc;animation:core 2.7s ease-in-out infinite}
 .cross{position:absolute;width:120%;height:1px;background:linear-gradient(90deg,transparent,#c9f5ff99,transparent);transform:rotate(45deg)}.cross:after{content:"";position:absolute;inset:0;transform:rotate(90deg);background:inherit}
 .readout{position:absolute;left:24px;right:24px;bottom:27px;transform:translateZ(35px)}.label{font-size:8px;letter-spacing:2px;color:#9ba8b9;font-weight:900}.readout h2{font-size:clamp(18px,2.1vw,24px);margin:8px 0 0;letter-spacing:1px}.readout h2 span{color:var(--red)}
-.load{height:3px;margin-top:14px;background:#ffffff1a;overflow:hidden}.load span{display:block;height:100%;width:76%;background:linear-gradient(90deg,var(--red,#ff3048),#ff9da8);box-shadow:0 0 12px var(--red);animation:loading 3s ease-in-out infinite alternate}
+.load{height:3px;margin-top:14px;background:#ffffff1a;overflow:hidden}.load span{display:block;height:100%;width:76%;background:linear-gradient(90deg,var(--red),#ff9da8);box-shadow:0 0 12px var(--red);animation:loading 3s ease-in-out infinite alternate}
 .readfoot{display:flex;justify-content:space-between;margin-top:12px;color:#8390a2;font-size:8px;letter-spacing:1px}.readfoot b{color:#83f5c1}
 .chip{position:absolute;z-index:3;padding:11px 13px;background:#070b13cc;border:1px solid #ffffff2b;backdrop-filter:blur(12px);box-shadow:0 15px 35px #0004;border-radius:7px;font-size:8px;letter-spacing:.8px;animation:float 5s ease-in-out infinite}
 .chip b{display:block;color:#fff;font-size:10px;margin-bottom:5px}.chip span{color:#96a4b7}.chip.a{top:17%;right:-1%}.chip.b{bottom:15%;left:-3%;animation-delay:-2.4s}.chip.c{top:52%;right:-6%;animation-delay:-1.3s}
@@ -55,25 +57,28 @@ h1 .outline{display:block;margin-top:13px;color:transparent;-webkit-text-stroke:
 .scroll{display:flex;align-items:center;justify-content:center;gap:12px;padding:0 20px 27px;color:#6e798a;font-size:9px;letter-spacing:2px;font-weight:900}.scroll i{display:block;width:42px;height:1px;background:linear-gradient(90deg,var(--red),transparent)}
 .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:0 clamp(20px,8vw,130px) 70px;border:1px solid var(--line);background:var(--line);overflow:hidden;border-radius:8px}
 .item{min-height:98px;padding:23px 19px;background:#070a11e8;transition:background .25s}.item:hover{background:#ff304817}.item small{display:block;color:#8793a5;font-size:9px;font-weight:900;letter-spacing:1.5px}.item strong{display:block;margin-top:10px;font-size:14px}.item strong span{color:var(--red)}
-footer{position:relative;z-index:1;text-align:center;padding:36px 20px 22px;background:#04060ae8;border-top:1px solid var(--line);backdrop-filter:blur(16px)}
+footer{position:relative;z-index:6;text-align:center;padding:36px 20px 22px;background:#04060af2;border-top:1px solid var(--line);backdrop-filter:blur(16px)}
 footer h2{margin:0 0 14px;font-size:17px;letter-spacing:1px}footer p{margin:9px;color:#aab4c5;font-size:13px;line-height:1.7}footer a{color:#ff6678;text-decoration:none}footer a:hover{text-decoration:underline}
+.footer-nav{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px 22px;margin:22px auto;max-width:700px}
+.footer-nav a{display:inline-block;padding:8px 2px;color:#d9dfeb;font-size:12px;font-weight:800;letter-spacing:.5px;text-decoration:none;transition:color .2s ease}
+.footer-nav a:hover{color:#ff6678;text-decoration:underline}
 .copyright{margin:25px auto 0;padding-top:18px;border-top:1px solid #ffffff17;max-width:800px;color:#6e7888;font-size:11px}
 .reveal{opacity:0;transform:translateY(22px);transition:.7s}.reveal.visible{opacity:1;transform:none}
 @keyframes pulse{50%{opacity:.35}}@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes halo{50%{transform:scale(1.12);opacity:.7}}
 @keyframes orbit{to{transform:rotateX(68deg) rotateZ(335deg)}}@keyframes orbit2{to{transform:rotateX(72deg) rotateZ(400deg)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes core{50%{box-shadow:0 0 24px #ff3048,0 0 58px #ff3048f2,inset 0 0 17px white;transform:scale(1.06)}}@keyframes loading{to{width:94%}}@keyframes float{0%,100%{translate:0 0}50%{translate:0 -12px}}
 @media(max-width:980px){.hero{grid-template-columns:1fr minmax(300px,.8fr);padding-left:5vw;padding-right:5vw;gap:10px}.visual{min-height:450px}.reactor-card{min-width:255px;width:min(36vw,330px)}.chip.c{right:-2%}.strip{margin-left:5vw;margin-right:5vw}}
-@media(max-width:720px){nav{min-height:72px;padding:12px 18px;flex-wrap:wrap}.logo{font-size:15px;letter-spacing:1px}.logo-mark{width:29px;height:29px}.navlinks{gap:16px}.navlinks a{font-size:9px;letter-spacing:1px}.status{display:none}
+@media(max-width:720px){nav{min-height:72px;padding:12px 18px;flex-wrap:wrap}.logo{font-size:15px;letter-spacing:1px}.logo-mark{width:29px;height:29px}.navlinks{gap:13px}.navlinks a{font-size:9px;letter-spacing:1px}.status{display:none}
 .hero{grid-template-columns:1fr;padding:53px 22px 34px;gap:5px;min-height:auto}.hero h1{font-size:clamp(51px,12vw,82px)}.lede{font-size:15px;line-height:1.75}.stats{margin-top:34px}.stat{padding:0 13px}.stat strong{font-size:23px}.stat span{font-size:8px;letter-spacing:.8px}
 .visual{min-height:430px;margin-top:6px}.reactor-card{width:280px;min-width:0}.orbit{width:325px}.orbit.two{width:278px}.halo{width:335px}.chip.a{right:3%;top:12%}.chip.b{left:2%;bottom:11%}.chip.c{right:1%;top:55%}.side{display:none}
 .strip{grid-template-columns:repeat(2,1fr);margin:10px 18px 45px}.item{min-height:86px;padding:17px 14px}}
-@media(max-width:420px){nav{gap:10px}.logo{font-size:13px}.navlinks{gap:11px}.navlinks a{font-size:8px}.hero{padding:43px 18px 25px}.eyebrow{font-size:8px;letter-spacing:1px}.hero h1{font-size:clamp(42px,12vw,58px)}.actions{gap:10px}.cta{width:100%;min-height:48px}.stats{gap:0}.stat{padding:0 8px}.stat strong{font-size:20px}.stat span{font-size:7px}.visual{min-height:370px}.reactor-card{width:245px}.orbit{width:280px}.orbit.two{width:235px}.halo{width:275px}.chip{padding:8px 9px}.chip b{font-size:9px}.chip.c{right:-1%}}
+@media(max-width:420px){nav{gap:10px}.logo{font-size:13px}.navlinks{gap:10px}.navlinks a{font-size:8px}.hero{padding:43px 18px 25px}.eyebrow{font-size:8px;letter-spacing:1px}.hero h1{font-size:clamp(42px,12vw,58px)}.actions{gap:10px}.cta{width:100%;min-height:48px}.stats{gap:0}.stat{padding:0 8px}.stat strong{font-size:20px}.stat span{font-size:7px}.visual{min-height:370px}.reactor-card{width:245px}.orbit{width:280px}.orbit.two{width:235px}.halo{width:275px}.chip{padding:8px 9px}.chip b{font-size:9px}.chip.c{right:-1%}.footer-nav{gap:8px 15px}.footer-nav a{font-size:11px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
 <div class="bg" aria-hidden="true"></div><div class="ambient" aria-hidden="true"></div><canvas id="stars" aria-hidden="true"></canvas><div class="scan" aria-hidden="true"></div>
-<nav>
-<a href="index.html" class="logo" aria-label="Avengers Database home"><span class="logo-mark">A</span><span>AVENGERS<span class="db">DATABASE</span></span></a>
+<nav aria-label="Main navigation">
+<a href="index.html" class="logo" aria-label="Avengers Database home"><span class="logo-mark">A</span><span>AVENGERS<span class="db"> DATABASE</span></span></a>
 <div class="navlinks"><a href="index.html">HOME</a><a href="Avenger photos.html">CHARACTERS ↗</a></div>
 <div class="status"><span class="dot"></span> ARCHIVE ONLINE</div>
 </nav>
@@ -103,11 +108,19 @@ footer h2{margin:0 0 14px;font-size:17px;letter-spacing:1px}footer p{margin:9px;
 <div class="item"><small>01 / HEROES</small><strong>Earth's <span>defenders</span></strong></div><div class="item"><small>02 / TECHNOLOGY</small><strong>Beyond human <span>limits</span></strong></div><div class="item"><small>03 / CLASSIFIED</small><strong>Secrets & <span>identities</span></strong></div><div class="item"><small>04 / THE ARCHIVE</small><strong>Legends <span>live on</span></strong></div>
 </section>
 </main>
-<footer><h2>AVENGERS DATABASE <span style="color:#ff3048">/</span> CONTACT</h2>
+<footer>
+<h2>AVENGERS DATABASE <span style="color:#ff3048">/</span> CONTACT</h2>
 <p><b>Created by:</b> Azhan Khan</p>
 <p>📸 <b>Instagram:</b> <a href="https://www.instagram.com/azhan_exe/" target="_blank" rel="noopener noreferrer">@azhan_exe</a></p>
 <p>📧 <b>Email:</b> <a href="mailto:azhanweb@outlook.com">azhanweb@outlook.com</a></p>
-<div class="copyright">© 2026 Azhan Khan | Avengers Database · Fan-made, informational project</div></footer>
+<nav class="footer-nav" aria-label="Important pages">
+<a href="about.html">ABOUT US</a>
+<a href="contact.html">CONTACT US</a>
+<a href="privacy-policy.html">PRIVACY POLICY</a>
+<a href="Avenger photos.html">CHARACTERS</a>
+</nav>
+<div class="copyright">© 2026 Azhan Khan | Avengers Database · Fan-made, informational project</div>
+</footer>
 <script>
 (()=>{const root=document.documentElement,visual=document.getElementById('visual'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches){visual.addEventListener('pointermove',e=>{const r=visual.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;root.style.setProperty('--mx',((x-.5)*18).toFixed(2)+'deg');root.style.setProperty('--my',((y-.5)*18).toFixed(2)+'deg');root.style.setProperty('--px',((x-.5)*8).toFixed(2)+'px');root.style.setProperty('--py',((y-.5)*8).toFixed(2)+'px')});visual.addEventListener('pointerleave',()=>['--mx','--my','--px','--py'].forEach((v,i)=>root.style.setProperty(v,['0deg','0deg','0px','0px'][i])))}
@@ -118,4 +131,5 @@ setup();draw();addEventListener('resize',()=>{cancelAnimationFrame(raf);setup();
 const items=document.querySelectorAll('.reveal');if('IntersectionObserver'in window&&!reduce){const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ob.unobserve(e.target)}}),{threshold:.12});items.forEach(x=>ob.observe(x))}else items.forEach(x=>x.classList.add('visible'));
 })();
 </script>
-</body></html>
+</body>
+</html>
