@@ -1,1117 +1,294 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
-    <title>Marvel Character Database</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-
-            font-family: Arial, Helvetica, sans-serif;
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    rgba(5, 8, 14, 0.96),
-                    rgba(5, 8, 14, 0.98)
-                );
-
-            min-height: 100vh;
-        }
-
-
-        /* NAVBAR */
-
-        nav {
-            height: 70px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 50px;
-
-            background: rgba(8, 11, 18, 0.98);
-
-            border-bottom: 1px solid #252b35;
-
-            position: sticky;
-            top: 0;
-
-            z-index: 100;
-        }
-
-
-        .logo {
-            font-size: 22px;
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-        }
-
-
-        .logo span {
-            color: #e63946;
-        }
-
-
-        nav a {
-            color: #dce1e8;
-
-            text-decoration: none;
-
-            margin-left: 28px;
-
-            font-size: 14px;
-
-            font-weight: bold;
-
-            transition: 0.3s;
-        }
-
-
-        nav a:hover {
-            color: #ff4d5a;
-        }
-
-
-        /* HEADER */
-
-        .header {
-            text-align: center;
-
-            padding: 70px 20px 45px;
-        }
-
-
-        .badge {
-            display: inline-block;
-
-            padding: 8px 18px;
-
-            border: 1px solid #e63946;
-
-            border-radius: 30px;
-
-            color: #ff5964;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-        }
-
-
-        .header h1 {
-            margin: 22px 0 10px;
-
-            font-size: 48px;
-
-            letter-spacing: 2px;
-        }
-
-
-        .header h1 span {
-            color: #e63946;
-        }
-
-
-        .header p {
-            color: #9da5b1;
-
-            font-size: 16px;
-
-            max-width: 650px;
-
-            margin: auto;
-
-            line-height: 1.7;
-        }
-
-
-        /* SEARCH */
-
-        .search-box {
-            width: 80%;
-
-            max-width: 700px;
-
-            margin: 0 auto 50px;
-
-            padding: 17px 22px;
-
-            background: #111620;
-
-            border: 1px solid #2b3340;
-
-            border-radius: 10px;
-
-            color: #7f8997;
-
-            text-align: left;
-        }
-
-
-        .search-box input {
-            width: calc(100% - 30px);
-
-            background: transparent;
-
-            border: none;
-
-            outline: none;
-
-            color: white;
-
-            font-size: 15px;
-
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-
-        .search-box input::placeholder {
-            color: #7f8997;
-        }
-
-
-        /* NO RESULTS */
-
-        #noResults {
-            display: none;
-
-            text-align: center;
-
-            color: #9da5b1;
-
-            margin: -25px auto 40px;
-
-            font-size: 15px;
-        }
-
-
-        /* CHARACTER SECTIONS */
-
-        .section {
-            width: 88%;
-
-            max-width: 1200px;
-
-            margin: 0 auto 55px;
-        }
-
-
-        .section-title {
-            font-size: 22px;
-
-            margin-bottom: 22px;
-
-            padding-left: 15px;
-
-            border-left: 4px solid #e63946;
-        }
-
-
-        /* CHARACTER GRID */
-
-        .character-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 18px;
-        }
-
-
-        /* CHARACTER CARD */
-
-        .character-card {
-            background:
-                linear-gradient(
-                    145deg,
-                    #151b25,
-                    #0d1118
-                );
-
-            border: 1px solid #252d39;
-
-            border-radius: 14px;
-
-            padding: 22px;
-
-            transition: 0.3s;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-
-        .character-card::before {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 3px;
-
-            background: #e63946;
-        }
-
-
-        .character-card:hover {
-            transform: translateY(-6px);
-
-            border-color: #e63946;
-
-            box-shadow:
-                0 15px 35px
-                rgba(230, 57, 70, 0.12);
-        }
-
-
-        .character-number {
-            color: #687383;
-
-            font-size: 12px;
-
-            letter-spacing: 1px;
-        }
-
-
-        .character-card h3 {
-            margin: 12px 0 5px;
-
-            font-size: 19px;
-        }
-
-
-        .real-name {
-            color: #8e98a6;
-
-            font-size: 13px;
-
-            margin-bottom: 18px;
-        }
-
-
-        .view-btn {
-            display: inline-block;
-
-            padding: 9px 15px;
-
-            border-radius: 6px;
-
-            background: #e63946;
-
-            color: white;
-
-            text-decoration: none;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-            transition: 0.3s;
-        }
-
-
-        .view-btn:hover {
-            background: #ff4d5a;
-
-            transform: translateY(-2px);
-        }
-
-
-        /* FOOTER */
-
-        footer {
-            margin-top: 80px;
-
-            padding: 35px 20px 20px;
-
-            text-align: center;
-
-            background: #080b10;
-
-            border-top: 1px solid #252b35;
-        }
-
-
-        footer h2 {
-            font-size: 21px;
-        }
-
-
-        footer p {
-            color: #9da5b1;
-
-            margin: 8px;
-        }
-
-
-        footer a {
-            color: #ff5964;
-        }
-
-
-        .copyright {
-            margin-top: 25px;
-
-            padding-top: 18px;
-
-            border-top: 1px solid #1d232c;
-
-            color: #626b78;
-
-            font-size: 13px;
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07090f">
+<meta name="description" content="Explore the Avengers Database: heroes, cosmic legends and Marvel villains in an interactive character archive.">
+<title>Character Database | Avengers Archive</title>
+<style>
+:root{--bg:#07090f;--panel:#101620;--red:#ff3048;--red2:#bd0c2a;--ice:#c9f5ff;--muted:#9aa6b8;--line:rgba(255,255,255,.12);--mx:0deg;--my:0deg;--spot-x:50%;--spot-y:50%}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--bg);color:#f7f8fb;font-family:Inter,Segoe UI,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit}button,input{font:inherit}a,button{-webkit-tap-highlight-color:transparent}
+::selection{background:#ff3048;color:#fff}
+#starfield{position:fixed;inset:0;width:100%;height:100%;z-index:-3;pointer-events:none}
+.bg-glow{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 85% 15%,#9c0e291b,transparent 35%),radial-gradient(ellipse at 8% 48%,#0c6c9014,transparent 32%),linear-gradient(180deg,#07090fbb,#07090ff5)}
+.scanlines{position:fixed;inset:0;z-index:8;pointer-events:none;opacity:.055;background:repeating-linear-gradient(to bottom,transparent 0 3px,#fff 4px,transparent 5px);mix-blend-mode:screen}
+.progress{position:fixed;top:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--red),#ff9ca8,var(--ice));box-shadow:0 0 14px #ff3048;z-index:200}
+nav{position:sticky;top:0;z-index:100;min-height:74px;padding:12px clamp(18px,5vw,76px);display:flex;align-items:center;justify-content:space-between;gap:20px;background:#07090fce;border-bottom:1px solid var(--line);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-size:clamp(14px,1.5vw,20px);font-weight:950;letter-spacing:1.4px;white-space:nowrap}
+.logo-mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid #ff5268;border-radius:9px;background:linear-gradient(145deg,#ff30484d,#ff304806);box-shadow:0 0 24px #ff304829;transform:rotate(-8deg)}
+.logo .red{color:var(--red)}
+.nav-right{display:flex;align-items:center;gap:clamp(14px,2.5vw,34px)}
+.nav-right a{position:relative;text-decoration:none;color:#d6deea;font-size:10px;font-weight:900;letter-spacing:1.6px;padding:10px 0;transition:color .25s}
+.nav-right a:after{content:"";position:absolute;left:0;bottom:3px;width:0;height:2px;background:var(--red);box-shadow:0 0 10px var(--red);transition:width .25s}
+.nav-right a:hover{color:#fff}.nav-right a:hover:after{width:100%}
+.live{display:flex;align-items:center;gap:8px;color:#9debc4;font-size:9px;font-weight:900;letter-spacing:1px;white-space:nowrap}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#62f4aa;box-shadow:0 0 12px #62f4aa;animation:pulse 1.7s infinite}
+.hero{position:relative;padding:68px 20px 40px;text-align:center;isolation:isolate}
+.hero:before{content:"";position:absolute;z-index:-1;left:50%;top:30px;transform:translateX(-50%);width:min(850px,90vw);height:280px;background:radial-gradient(ellipse,#d7193820,transparent 68%);filter:blur(12px)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 14px;border:1px solid #ff304858;border-radius:999px;background:#ff30480d;color:#ff8996;font-size:9px;font-weight:900;letter-spacing:2px}
+.eyebrow:before{content:"";width:6px;height:6px;background:var(--red);box-shadow:0 0 12px var(--red);transform:rotate(45deg)}
+.hero h1{margin:21px 0 15px;font-size:clamp(40px,7vw,82px);line-height:.95;letter-spacing:-.06em;font-weight:1000;text-transform:uppercase}
+.hero h1 span{color:var(--red);text-shadow:0 0 40px #ff30482c}
+.hero p{max-width:680px;margin:0 auto;color:#aab5c5;font-size:clamp(14px,1.5vw,17px);line-height:1.8}
+.hero-meta{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-top:25px;color:#788599;font-size:9px;font-weight:900;letter-spacing:1.3px}
+.hero-meta .sep{width:4px;height:4px;border-radius:50%;background:var(--red)}
+.metrics{width:min(760px,92%);margin:35px auto 0;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0b1019b8;backdrop-filter:blur(12px)}
+.metric{padding:17px 12px;border-right:1px solid var(--line)}.metric:last-child{border:0}
+.metric strong{display:block;font-size:clamp(21px,3vw,30px);letter-spacing:-1px}.metric strong em{font-style:normal;color:var(--red)}
+.metric span{display:block;margin-top:5px;color:#8491a4;font-size:8px;font-weight:900;letter-spacing:1.5px}
+.toolbar{position:relative;z-index:2;width:min(1160px,90%);margin:12px auto 32px;display:grid;grid-template-columns:minmax(240px,1fr) auto;gap:14px;align-items:center}
+.search-shell{display:flex;align-items:center;gap:12px;min-height:55px;padding:0 17px;border:1px solid #ffffff1b;border-radius:10px;background:linear-gradient(145deg,#111824ed,#0b1018ed);box-shadow:0 12px 35px #0002;transition:border-color .25s,box-shadow .25s}
+.search-shell:focus-within{border-color:#ff304888;box-shadow:0 0 0 3px #ff304815,0 12px 35px #0002}
+.search-icon{color:#ff6678;font-size:18px}
+.search-shell input{width:100%;min-width:0;background:transparent;border:0;outline:0;color:#fff;font-size:14px}
+.search-shell input::placeholder{color:#778497}
+.keyhint{padding:4px 7px;border:1px solid #ffffff20;border-radius:5px;color:#7e8a9c;font-size:10px;white-space:nowrap}
+.clear-btn{border:1px solid #ffffff20;background:#111722;color:#bac4d2;border-radius:9px;padding:12px 16px;font-size:10px;font-weight:900;letter-spacing:1px;cursor:pointer;transition:.25s}
+.clear-btn:hover{border-color:#ff3048;color:#fff;background:#ff304814}
+.filters{width:min(1160px,90%);margin:0 auto 34px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.filter-label{color:#768396;font-size:9px;font-weight:900;letter-spacing:1.5px;margin-right:5px}
+.filter{border:1px solid #ffffff1b;background:#0e131d;color:#aeb8c7;padding:10px 14px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.7px;cursor:pointer;transition:transform .2s,border-color .2s,color .2s,background .2s}
+.filter:hover{transform:translateY(-2px);border-color:#ff304877;color:#fff}
+.filter.active{background:#ff30481a;border-color:#ff3048;color:#fff;box-shadow:inset 0 0 18px #ff30480c}
+.results-row{width:min(1160px,90%);margin:0 auto 15px;display:flex;justify-content:space-between;align-items:center;gap:15px;color:#8190a3;font-size:10px;letter-spacing:1px;font-weight:800}
+.results-row strong{color:#f3f5f8}.results-row .classified{color:#ff7787}
+.section{width:min(1160px,90%);margin:0 auto 55px}
+.section-heading{display:flex;align-items:center;gap:13px;margin:0 0 20px}
+.section-index{display:grid;place-items:center;width:36px;height:36px;flex:0 0 36px;border:1px solid #ff304855;border-radius:9px;background:#ff304810;color:#ff7a89;font-size:10px;font-weight:900}
+.section-title{font-size:clamp(18px,2.4vw,24px);margin:0;letter-spacing:-.5px}
+.section-sub{margin-top:4px;color:#7e8a9d;font-size:10px;letter-spacing:.4px}
+.section-line{height:1px;flex:1;background:linear-gradient(90deg,#ffffff20,transparent);margin-left:6px}
+.character-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.character-card{--tilt-x:0deg;--tilt-y:0deg;--lift:0px;position:relative;min-width:0;min-height:190px;padding:19px 18px 17px;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;border:1px solid #ffffff16;border-radius:13px;background:radial-gradient(circle at var(--spot-x) var(--spot-y),#ff304817,transparent 43%),linear-gradient(145deg,#151c28f2,#0b1018f5);transform:perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(var(--lift));transform-style:preserve-3d;transition:transform .18s ease,border-color .25s,box-shadow .25s;isolation:isolate}
+.character-card:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,var(--red),#ff9ba5,transparent 85%);opacity:.75}
+.character-card:after{content:"";position:absolute;right:-35px;top:-45px;width:110px;height:110px;border:1px solid #ffffff0b;border-radius:50%;box-shadow:0 0 0 15px #ffffff04,0 0 0 30px #ffffff02;pointer-events:none}
+.character-card:hover{--lift:-5px;border-color:#ff30486e;box-shadow:0 22px 42px #0006,0 0 24px #ff30480c}
+.card-top{position:relative;z-index:1;width:100%;display:flex;justify-content:space-between;align-items:center;gap:8px;color:#738095;font-size:9px;font-weight:900;letter-spacing:1.2px;transform:translateZ(18px)}
+.class-tag{border:1px solid #ffffff19;border-radius:4px;padding:4px 6px;color:#9aa8b9;font-size:7px;letter-spacing:1px}
+.card-symbol{position:absolute;right:17px;top:50px;width:48px;height:48px;display:grid;place-items:center;border:1px solid #ffffff12;border-radius:50%;color:#ff667733;font-size:22px;font-weight:900;transform:translateZ(10px);pointer-events:none}
+.character-card h3{position:relative;z-index:1;margin:27px 0 5px;font-size:clamp(15px,1.35vw,18px);line-height:1.2;letter-spacing:-.3px;transform:translateZ(22px)}
+.real-name{position:relative;z-index:1;color:#8f9bad;font-size:11px;line-height:1.5;transform:translateZ(15px)}
+.card-bottom{position:relative;z-index:1;width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:19px;transform:translateZ(20px)}
+.view-btn{display:inline-flex;align-items:center;gap:7px;color:#f6f7fa;text-decoration:none;font-size:9px;font-weight:900;letter-spacing:.8px;transition:color .2s}
+.view-btn .arrow{display:inline-grid;place-items:center;width:22px;height:22px;border:1px solid #ff304855;border-radius:6px;color:#ff7b89;transition:transform .2s,background .2s}
+.view-btn:hover{color:#ff8b98}.view-btn:hover .arrow{transform:translate(2px,-2px);background:#ff30481b}
+.card-status{display:flex;align-items:center;gap:5px;color:#68778a;font-size:7px;letter-spacing:.7px;font-weight:900;white-space:nowrap}
+.card-status:before{content:"";width:5px;height:5px;border-radius:50%;background:#70dba6;box-shadow:0 0 8px #70dba655}
+.no-results{display:none;width:min(800px,90%);margin:30px auto 70px;padding:45px 20px;text-align:center;border:1px dashed #ffffff25;border-radius:14px;background:#0c1119a8}
+.no-results .icon{font-size:32px;color:#ff6576}.no-results h2{margin:12px 0 7px;font-size:21px}.no-results p{margin:0;color:#8c99ab;font-size:13px}
+footer{margin-top:80px;padding:38px 20px 22px;text-align:center;background:#05070cf0;border-top:1px solid var(--line);backdrop-filter:blur(18px)}
+.footer-title{font-size:18px;font-weight:950;letter-spacing:1px}.footer-title span{color:var(--red)}
+footer p{margin:10px;color:#a0acbc;font-size:13px;line-height:1.7}footer a{color:#ff697a;text-decoration:none}footer a:hover{text-decoration:underline}
+.footer-bottom{width:min(820px,90%);margin:24px auto 0;padding-top:17px;border-top:1px solid #ffffff12;color:#697587;font-size:10px;letter-spacing:.4px}
+.to-top{position:fixed;right:20px;bottom:20px;z-index:90;width:42px;height:42px;border:1px solid #ff304866;border-radius:11px;background:#0c111ddd;color:#ff8492;font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s;backdrop-filter:blur(10px)}
+.to-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}.to-top:hover{background:#ff304820}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s,transform .65s}.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes pulse{50%{opacity:.35;box-shadow:0 0 3px #62f4aa}}
+@media(max-width:1000px){.character-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.character-card{min-height:180px}.hero{padding-top:55px}}
+@media(max-width:720px){nav{padding:12px 18px;min-height:68px}.logo{font-size:13px;letter-spacing:.8px}.logo-mark{width:29px;height:29px}.live{display:none}.nav-right{gap:16px}.nav-right a{font-size:9px;letter-spacing:1px}
+.hero{padding:48px 18px 32px}.hero h1{font-size:clamp(38px,9.5vw,65px)}.metrics{margin-top:25px}.metric{padding:14px 8px}.metric span{font-size:7px;letter-spacing:.8px}
+.toolbar{grid-template-columns:1fr;width:90%;margin-bottom:22px}.clear-btn{justify-self:start}.filters{width:90%;gap:7px;margin-bottom:27px}.filter-label{width:100%;margin-bottom:2px}.filter{padding:9px 12px;font-size:9px}
+.section{width:90%;margin-bottom:43px}.character-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.character-card{padding:16px 14px;min-height:178px}.character-card h3{font-size:15px;margin-top:24px}.card-symbol{right:12px;top:48px;width:38px;height:38px;font-size:18px}.card-status{display:none}.card-bottom{padding-top:16px}.results-row{width:90%}}
+@media(max-width:390px){.logo{font-size:11px}.nav-right{gap:11px}.nav-right a{font-size:8px}.hero{padding-top:40px}.eyebrow{font-size:8px;letter-spacing:1px}.metrics{width:96%}.metric strong{font-size:20px}.metric span{font-size:6px}.character-grid{gap:8px}.character-card{padding:14px 11px;min-height:173px}.character-card h3{font-size:14px}.real-name{font-size:10px}.card-top{font-size:8px}.class-tag{font-size:6px;padding:3px 4px}.view-btn{font-size:8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
 </head>
-
-
 <body>
+<div class="progress" id="progress"></div>
+<canvas id="starfield" aria-hidden="true"></canvas><div class="bg-glow" aria-hidden="true"></div><div class="scanlines" aria-hidden="true"></div>
+<nav>
+  <a class="logo" href="index.html" aria-label="Go to Avengers Database home"><span class="logo-mark">A</span><span>AVENGERS<span class="red">DATABASE</span></span></a>
+  <div class="nav-right"><a href="index.html">HOME</a><a href="Avenger photos.html">CHARACTERS</a></div>
+  <div class="live"><span class="live-dot"></span> ARCHIVE ONLINE</div>
+</nav>
 
+<header class="hero">
+  <div class="eyebrow">Marvel Character Archive // 2026</div>
+  <h1>CHARACTER <span>DATABASE</span></h1>
+  <p>Heroes. Cosmic legends. Dangerous minds. Explore the identities behind the Marvel Universe in one interactive, classified archive.</p>
+  <div class="hero-meta"><span>INTELLIGENCE NETWORK</span><span class="sep"></span><span>CLASSIFIED PROFILES</span><span class="sep"></span><span>ARCHIVE STATUS: ACTIVE</span></div>
+  <div class="metrics">
+    <div class="metric"><strong id="totalCount">28<em>+</em></strong><span>CHARACTER PROFILES</span></div>
+    <div class="metric"><strong>04</strong><span>ARCHIVE SECTIONS</span></div>
+    <div class="metric"><strong>2026</strong><span>DATABASE EDITION</span></div>
+  </div>
+</header>
 
-    <!-- NAVIGATION -->
+<div class="toolbar">
+  <label class="search-shell" for="characterSearch"><span class="search-icon">⌕</span><input id="characterSearch" type="search" placeholder="Search hero, villain or real identity..." autocomplete="off" aria-label="Search characters"><span class="keyhint">/</span></label>
+  <button class="clear-btn" id="clearSearch" type="button">↺ &nbsp; RESET FILTERS</button>
+</div>
+<div class="filters" role="group" aria-label="Filter characters">
+  <span class="filter-label">FILTER ARCHIVE</span>
+  <button class="filter active" data-filter="all" type="button">ALL CHARACTERS</button>
+  <button class="filter" data-filter="avengers" type="button">AVENGERS</button>
+  <button class="filter" data-filter="cosmic" type="button">COSMIC</button>
+  <button class="filter" data-filter="heroes" type="button">HEROES</button>
+  <button class="filter" data-filter="villains" type="button">VILLAINS</button>
+</div>
+<div class="results-row"><span>DATABASE RESULTS <strong id="resultCount">28</strong></span><span class="classified">● LIVE SEARCH ACTIVE</span></div>
 
-    <nav>
-
-        <div class="logo">
-            AVENGERS<span>DATABASE</span>
-        </div>
-
-
-        <div>
-
-            <a href="index.html">
-                HOME
-            </a>
-
-            <a href="Avenger photos.html">
-                CHARACTERS
-            </a>
-
-        </div>
-
-    </nav>
-
-
-
-    <!-- PAGE HEADER -->
-
-    <header class="header">
-
-        <div class="badge">
-            MARVEL CHARACTER ARCHIVE
-        </div>
-
-
-        <h1>
-            CHARACTER <span>DATABASE</span>
-        </h1>
-
-
-        <p>
-            Explore heroes, villains and legendary characters
-            from the Marvel Universe.
-        </p>
-
-    </header>
-
-
-
-    <!-- SEARCH -->
-
-    <div class="search-box">
-
-        🔎 &nbsp;
-
-        <input
-            type="text"
-            id="characterSearch"
-            placeholder="Search characters..."
-            autocomplete="off"
-        >
-
+<main id="archive">
+  <section class="section reveal" data-section="avengers">
+    <div class="section-heading"><span class="section-index">01</span><div><h2 class="section-title">The Avengers</h2><div class="section-sub">Earth's Mightiest Heroes</div></div><div class="section-line"></div></div>
+    <div class="character-grid">
+      <article class="character-card" data-category="avengers heroes" data-name="iron man tony stark"><div class="card-top"><span>#001</span><span class="class-tag">AVENGER</span></div><span class="card-symbol">✦</span><h3>Iron Man</h3><div class="real-name">Tony Stark</div><div class="card-bottom"><a href="Iron Man.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="avengers heroes" data-name="captain america steve rogers"><div class="card-top"><span>#002</span><span class="class-tag">AVENGER</span></div><span class="card-symbol">★</span><h3>Captain America</h3><div class="real-name">Steve Rogers</div><div class="card-bottom"><a href="captain-america.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="avengers heroes cosmic" data-name="thor thor odinson"><div class="card-top"><span>#003</span><span class="class-tag">ASGARDIAN</span></div><span class="card-symbol">ϟ</span><h3>Thor</h3><div class="real-name">Thor Odinson</div><div class="card-bottom"><a href="thor.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="avengers heroes" data-name="hulk bruce banner"><div class="card-top"><span>#004</span><span class="class-tag">AVENGER</span></div><span class="card-symbol">◈</span><h3>Hulk</h3><div class="real-name">Bruce Banner</div><div class="card-bottom"><a href="hulk.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="avengers heroes" data-name="black widow natasha romanoff"><div class="card-top"><span>#005</span><span class="class-tag">SPY</span></div><span class="card-symbol">⌘</span><h3>Black Widow</h3><div class="real-name">Natasha Romanoff</div><div class="card-bottom"><a href="black-widow.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="avengers heroes" data-name="hawkeye clint barton"><div class="card-top"><span>#006</span><span class="class-tag">SHARPSHOOTER</span></div><span class="card-symbol">➶</span><h3>Hawkeye</h3><div class="real-name">Clint Barton</div><div class="card-bottom"><a href="hawkeye.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="heroes" data-name="spider-man peter parker"><div class="card-top"><span>#007</span><span class="class-tag">HERO</span></div><span class="card-symbol">⌘</span><h3>Spider-Man</h3><div class="real-name">Peter Parker</div><div class="card-bottom"><a href="spider-man.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="heroes" data-name="doctor strange stephen strange"><div class="card-top"><span>#008</span><span class="class-tag">MYSTIC</span></div><span class="card-symbol">◎</span><h3>Doctor Strange</h3><div class="real-name">Stephen Strange</div><div class="card-bottom"><a href="doctor-strange.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
     </div>
+  </section>
 
-
-    <div id="noResults">
-        No character found.
+  <section class="section reveal" data-section="cosmic">
+    <div class="section-heading"><span class="section-index">02</span><div><h2 class="section-title">Guardians & Cosmic Heroes</h2><div class="section-sub">Beyond Earth • Across the galaxy</div></div><div class="section-line"></div></div>
+    <div class="character-grid">
+      <article class="character-card" data-category="cosmic heroes" data-name="star-lord peter quill"><div class="card-top"><span>#009</span><span class="class-tag">COSMIC</span></div><span class="card-symbol">✧</span><h3>Star-Lord</h3><div class="real-name">Peter Quill</div><div class="card-bottom"><a href="star-lord.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="cosmic heroes" data-name="gamora"><div class="card-top"><span>#010</span><span class="class-tag">COSMIC</span></div><span class="card-symbol">◇</span><h3>Gamora</h3><div class="real-name">Gamora</div><div class="card-bottom"><a href="gamora.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="cosmic heroes" data-name="rocket rocket raccoon"><div class="card-top"><span>#011</span><span class="class-tag">COSMIC</span></div><span class="card-symbol">⚙</span><h3>Rocket</h3><div class="real-name">Rocket Raccoon</div><div class="card-bottom"><a href="rocket.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="cosmic heroes" data-name="groot"><div class="card-top"><span>#012</span><span class="class-tag">COSMIC</span></div><span class="card-symbol">❧</span><h3>Groot</h3><div class="real-name">Groot</div><div class="card-bottom"><a href="groot.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
     </div>
-
-
-
-    <!-- AVENGERS -->
-
-    <section class="section">
-
-        <h2 class="section-title">
-            The Avengers
-        </h2>
-
-
-        <div class="character-grid">
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #001
-                </div>
-
-                <h3>
-                    Iron Man
-                </h3>
-
-                <div class="real-name">
-                    Tony Stark
-                </div>
-
-                <a
-                    href="Iron Man.html"
-                    class="view-btn"
-                >
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #002
-                </div>
-
-                <h3>
-                    Captain America
-                </h3>
-
-                <div class="real-name">
-                    Steve Rogers
-                </div>
-
-                <a href="captain-america.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #003
-                </div>
-
-                <h3>
-                    Thor
-                </h3>
-
-                <div class="real-name">
-                    Thor Odinson
-                </div>
-
-                <a href="thor.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #004
-                </div>
-
-                <h3>
-                    Hulk
-                </h3>
-
-                <div class="real-name">
-                    Bruce Banner
-                </div>
-
-                <a href="hulk.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #005
-                </div>
-
-                <h3>
-                    Black Widow
-                </h3>
-
-                <div class="real-name">
-                    Natasha Romanoff
-                </div>
-
-                <a href="black-widow.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #006
-                </div>
-
-                <h3>
-                    Hawkeye
-                </h3>
-
-                <div class="real-name">
-                    Clint Barton
-                </div>
-
-                <a href="hawkeye.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #007
-                </div>
-
-                <h3>
-                    Spider-Man
-                </h3>
-
-                <div class="real-name">
-                    Peter Parker
-                </div>
-
-                <a href="spider-man.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #008
-                </div>
-
-                <h3>
-                    Doctor Strange
-                </h3>
-
-                <div class="real-name">
-                    Stephen Strange
-                </div>
-
-                <a href="doctor-strange.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- GUARDIANS -->
-
-    <section class="section">
-
-        <h2 class="section-title">
-            Guardians & Cosmic Heroes
-        </h2>
-
-
-        <div class="character-grid">
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #009
-                </div>
-
-                <h3>
-                    Star-Lord
-                </h3>
-
-                <div class="real-name">
-                    Peter Quill
-                </div>
-
-                <a href="star-lord.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #010
-                </div>
-
-                <h3>
-                    Gamora
-                </h3>
-
-                <div class="real-name">
-                    Gamora
-                </div>
-
-                <a href="gamora.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #011
-                </div>
-
-                <h3>
-                    Rocket
-                </h3>
-
-                <div class="real-name">
-                    Rocket Raccoon
-                </div>
-
-                <a href="rocket.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-
-
-            <div class="character-card">
-
-                <div class="character-number">
-                    #012
-                </div>
-
-                <h3>
-                    Groot
-                </h3>
-
-                <div class="real-name">
-                    Groot
-                </div>
-
-                <a href="groot.html"
-                   class="view-btn">
-                    View Profile →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- OTHER HEROES -->
-
-    <section class="section">
-
-        <h2 class="section-title">
-            Marvel Heroes
-        </h2>
-
-
-        <div class="character-grid">
-
-
-            <div class="character-card">
-                <div class="character-number">#013</div>
-                <h3>Black Panther</h3>
-                <div class="real-name">T'Challa</div>
-                <a href="black-panther.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#014</div>
-                <h3>Captain Marvel</h3>
-                <div class="real-name">Carol Danvers</div>
-                <a href="captain-marvel.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#015</div>
-                <h3>Ant-Man</h3>
-                <div class="real-name">Scott Lang</div>
-                <a href="ant-man.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#016</div>
-                <h3>Wasp</h3>
-                <div class="real-name">Hope van Dyne</div>
-                <a href="wasp.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#017</div>
-                <h3>Shang-Chi</h3>
-                <div class="real-name">Shang-Chi</div>
-                <a href="shang-chi.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#018</div>
-                <h3>Moon Knight</h3>
-                <div class="real-name">Marc Spector</div>
-                <a href="moon-knight.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#019</div>
-                <h3>Ms. Marvel</h3>
-                <div class="real-name">Kamala Khan</div>
-                <a href="ms-marvel.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#020</div>
-                <h3>Wolverine</h3>
-                <div class="real-name">Logan</div>
-                <a href="wolverine.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- VILLAINS -->
-
-    <section class="section">
-
-        <h2 class="section-title">
-            Marvel Villains
-        </h2>
-
-
-        <div class="character-grid">
-
-
-            <div class="character-card">
-                <div class="character-number">#021</div>
-                <h3>Thanos</h3>
-                <div class="real-name">Thanos</div>
-                <a href="thanos.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#022</div>
-                <h3>Loki</h3>
-                <div class="real-name">Loki Laufeyson</div>
-                <a href="loki.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#023</div>
-                <h3>Ultron</h3>
-                <div class="real-name">Ultron</div>
-                <a href="ultron.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#024</div>
-                <h3>Green Goblin</h3>
-                <div class="real-name">Norman Osborn</div>
-                <a href="green-goblin.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#025</div>
-                <h3>Doctor Doom</h3>
-                <div class="real-name">Victor von Doom</div>
-                <a href="doctor-doom.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#026</div>
-                <h3>Red Skull</h3>
-                <div class="real-name">Johann Schmidt</div>
-                <a href="red-skull.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#027</div>
-                <h3>Killmonger</h3>
-                <div class="real-name">Erik Killmonger</div>
-                <a href="killmonger.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-
-            <div class="character-card">
-                <div class="character-number">#028</div>
-                <h3>Kingpin</h3>
-                <div class="real-name">Wilson Fisk</div>
-                <a href="kingpin.html" class="view-btn">
-                    View Profile →
-                </a>
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <h2>
-            For Further Details
-        </h2>
-
-
-        <p>
-            <b>Created by:</b> Azhan Khan
-        </p>
-
-
-        <p>
-            📸 <b>Instagram:</b>
-
-            <a
-                href="https://www.instagram.com/azhan_exe/"
-                target="_blank"
-            >
-                @azhan_exe
-            </a>
-        </p>
-
-
-        <p>
-            📧 <b>Email:</b>
-
-            <a
-                href="mailto:azhanweb@outlook.com"
-            >
-                azhanweb@outlook.com
-            </a>
-        </p>
-
-
-        <div class="copyright">
-            © 2026 Azhan Khan | Avengers Database
-        </div>
-
-    </footer>
-
-
-
-    <!-- SEARCH JAVASCRIPT -->
-
-    <script>
-
-        const searchInput =
-            document.getElementById("characterSearch");
-
-        const characterCards =
-            document.querySelectorAll(".character-card");
-
-        const sections =
-            document.querySelectorAll(".section");
-
-        const noResults =
-            document.getElementById("noResults");
-
-
-        searchInput.addEventListener("input", function () {
-
-            const searchText =
-                this.value.trim().toLowerCase();
-
-            let foundCharacters = 0;
-
-
-            characterCards.forEach(function (card) {
-
-                const characterName =
-                    card.querySelector("h3")
-                    .textContent
-                    .toLowerCase();
-
-                const realName =
-                    card.querySelector(".real-name")
-                    .textContent
-                    .toLowerCase();
-
-
-                if (
-                    characterName.includes(searchText) ||
-                    realName.includes(searchText)
-                ) {
-
-                    card.style.display = "";
-
-                    foundCharacters++;
-
-                } else {
-
-                    card.style.display = "none";
-
-                }
-
-            });
-
-
-            sections.forEach(function (section) {
-
-                const visibleCards =
-                    Array.from(
-                        section.querySelectorAll(".character-card")
-                    ).filter(function (card) {
-
-                        return card.style.display !== "none";
-
-                    });
-
-
-                if (
-                    searchText !== "" &&
-                    visibleCards.length === 0
-                ) {
-
-                    section.style.display = "none";
-
-                } else {
-
-                    section.style.display = "";
-
-                }
-
-            });
-
-
-            if (
-                searchText !== "" &&
-                foundCharacters === 0
-            ) {
-
-                noResults.style.display = "block";
-
-            } else {
-
-                noResults.style.display = "none";
-
-            }
-
-        });
-
-    </script>
-
-
+  </section>
+
+  <section class="section reveal" data-section="heroes">
+    <div class="section-heading"><span class="section-index">03</span><div><h2 class="section-title">Marvel Heroes</h2><div class="section-sub">Champions, vigilantes & legends</div></div><div class="section-line"></div></div>
+    <div class="character-grid">
+      <article class="character-card" data-category="heroes" data-name="black panther tchalla"><div class="card-top"><span>#013</span><span class="class-tag">HERO</span></div><span class="card-symbol">♢</span><h3>Black Panther</h3><div class="real-name">T'Challa</div><div class="card-bottom"><a href="black-panther.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="heroes cosmic" data-name="captain marvel carol danvers"><div class="card-top"><span>#014</span><span class="class-tag">COSMIC</span></div><span class="card-symbol">✦</span><h3>Captain Marvel</h3><div class="real-name">Carol Danvers</div><div class="card-bottom"><a href="captain-marvel.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="heroes" data-name="ant-man scott lang"><div class="card-top"><span>#015</span><span class="class-tag">HERO</span></div><span class="card-symbol">⌁</span><h3>Ant-Man</h3><div class="real-name">Scott Lang</div><div class="card-bottom"><a href="ant-man.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="heroes" data-name="wasp hope van dyne"><div class="card-top"><span>#016</span><span class="class-tag">HERO</span></div><span class="card-symbol">✧</span><h3>Wasp</h3><div class="real-name">Hope van Dyne</div><div class="card-bottom"><a href="wasp.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="heroes" data-name="shang-chi"><div class="card-top"><span>#017</span><span class="class-tag">HERO</span></div><span class="card-symbol">◎</span><h3>Shang-Chi</h3><div class="real-name">Shang-Chi</div><div class="card-bottom"><a href="shang-chi.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="heroes" data-name="moon knight marc spector"><div class="card-top"><span>#018</span><span class="class-tag">VIGILANTE</span></div><span class="card-symbol">☾</span><h3>Moon Knight</h3><div class="real-name">Marc Spector</div><div class="card-bottom"><a href="moon-knight.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="heroes" data-name="ms marvel kamala khan"><div class="card-top"><span>#019</span><span class="class-tag">HERO</span></div><span class="card-symbol">✦</span><h3>Ms. Marvel</h3><div class="real-name">Kamala Khan</div><div class="card-bottom"><a href="ms-marvel.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="heroes" data-name="wolverine logan"><div class="card-top"><span>#020</span><span class="class-tag">MUTANT</span></div><span class="card-symbol">╱</span><h3>Wolverine</h3><div class="real-name">Logan</div><div class="card-bottom"><a href="wolverine.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+    </div>
+  </section>
+
+  <section class="section reveal" data-section="villains">
+    <div class="section-heading"><span class="section-index">04</span><div><h2 class="section-title">Marvel Villains</h2><div class="section-sub">Threat files • High-risk entities</div></div><div class="section-line"></div></div>
+    <div class="character-grid">
+      <article class="character-card" data-category="villains cosmic" data-name="thanos"><div class="card-top"><span>#021</span><span class="class-tag">THREAT</span></div><span class="card-symbol">◈</span><h3>Thanos</h3><div class="real-name">Thanos</div><div class="card-bottom"><a href="thanos.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="villains cosmic" data-name="loki loki laufeyson"><div class="card-top"><span>#022</span><span class="class-tag">THREAT</span></div><span class="card-symbol">♜</span><h3>Loki</h3><div class="real-name">Loki Laufeyson</div><div class="card-bottom"><a href="loki.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="villains" data-name="ultron"><div class="card-top"><span>#023</span><span class="class-tag">AI THREAT</span></div><span class="card-symbol">⌬</span><h3>Ultron</h3><div class="real-name">Ultron</div><div class="card-bottom"><a href="ultron.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="villains" data-name="green goblin norman osborn"><div class="card-top"><span>#024</span><span class="class-tag">THREAT</span></div><span class="card-symbol">☠</span><h3>Green Goblin</h3><div class="real-name">Norman Osborn</div><div class="card-bottom"><a href="green-goblin.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="villains" data-name="doctor doom victor von doom"><div class="card-top"><span>#025</span><span class="class-tag">THREAT</span></div><span class="card-symbol">♛</span><h3>Doctor Doom</h3><div class="real-name">Victor von Doom</div><div class="card-bottom"><a href="doctor-doom.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="villains" data-name="red skull johann schmidt"><div class="card-top"><span>#026</span><span class="class-tag">THREAT</span></div><span class="card-symbol">☠</span><h3>Red Skull</h3><div class="real-name">Johann Schmidt</div><div class="card-bottom"><a href="red-skull.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="villains" data-name="killmonger erik killmonger"><div class="card-top"><span>#027</span><span class="class-tag">THREAT</span></div><span class="card-symbol">◆</span><h3>Killmonger</h3><div class="real-name">Erik Killmonger</div><div class="card-bottom"><a href="killmonger.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+      <article class="character-card" data-category="villains" data-name="kingpin wilson fisk"><div class="card-top"><span>#028</span><span class="class-tag">THREAT</span></div><span class="card-symbol">♜</span><h3>Kingpin</h3><div class="real-name">Wilson Fisk</div><div class="card-bottom"><a href="kingpin.html" class="view-btn">VIEW PROFILE <span class="arrow">↗</span></a><span class="card-status">FILE READY</span></div></article>
+    </div>
+  </section>
+  <div class="no-results" id="noResults"><div class="icon">⌕</div><h2>No matching files found</h2><p>Try another character name or real identity, or reset your filters.</p></div>
+</main>
+
+<footer><div class="footer-title">AVENGERS DATABASE <span>/</span> CONTACT</div>
+<p><b>Created by:</b> Azhan Khan</p>
+<p>📸 <b>Instagram:</b> <a href="https://www.instagram.com/azhan_exe/" target="_blank" rel="noopener noreferrer">@azhan_exe</a></p>
+<p>📧 <b>Email:</b> <a href="mailto:azhanweb@outlook.com">azhanweb@outlook.com</a></p>
+<div class="footer-bottom">© 2026 Azhan Khan | Avengers Database · Fan-made informational project</div></footer>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
+
+<script>
+(()=>{
+ const cards=[...document.querySelectorAll('.character-card')];
+ const sections=[...document.querySelectorAll('.section')];
+ const input=document.getElementById('characterSearch');
+ const buttons=[...document.querySelectorAll('.filter')];
+ const noResults=document.getElementById('noResults');
+ const resultCount=document.getElementById('resultCount');
+ const clear=document.getElementById('clearSearch');
+ const toTop=document.getElementById('toTop');
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let activeFilter='all';
+
+ function filterCards(){
+   const q=input.value.trim().toLowerCase();
+   let visible=0;
+   cards.forEach(card=>{
+     const text=(card.dataset.name+' '+card.querySelector('h3').textContent+' '+card.querySelector('.real-name').textContent).toLowerCase();
+     const category=card.dataset.category.split(' ');
+     const matchText=!q||text.includes(q);
+     const matchCategory=activeFilter==='all'||category.includes(activeFilter);
+     const show=matchText&&matchCategory;
+     card.hidden=!show;
+     if(show)visible++;
+   });
+   sections.forEach(section=>{
+     const sectionHas=[...section.querySelectorAll('.character-card')].some(c=>!c.hidden);
+     section.hidden=!sectionHas;
+   });
+   noResults.style.display=visible?'none':'block';
+   resultCount.textContent=visible;
+   document.getElementById('totalCount').innerHTML=visible===28?'28<em>+</em>':String(visible);
+ }
+ input.addEventListener('input',filterCards);
+ buttons.forEach(btn=>btn.addEventListener('click',()=>{
+   activeFilter=btn.dataset.filter;
+   buttons.forEach(b=>b.classList.toggle('active',b===btn));
+   filterCards();
+ }));
+ clear.addEventListener('click',()=>{
+   input.value='';activeFilter='all';
+   buttons.forEach(b=>b.classList.toggle('active',b.dataset.filter==='all'));
+   filterCards();input.focus();
+ });
+ // "/" focuses search, except when already typing in a field.
+ document.addEventListener('keydown',e=>{
+   if(e.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();input.focus()}
+   if(e.key==='Escape'&&document.activeElement===input){input.value='';filterCards();input.blur()}
+ });
+ // Interactive 3D card tilt and moving spotlight on pointer devices.
+ if(!reduced&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+   cards.forEach(card=>{
+     card.addEventListener('pointermove',e=>{
+       const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+       card.style.setProperty('--tilt-y',((x-.5)*9).toFixed(2)+'deg');
+       card.style.setProperty('--tilt-x',((.5-y)*8).toFixed(2)+'deg');
+       card.style.setProperty('--spot-x',(x*100).toFixed(1)+'%');
+       card.style.setProperty('--spot-y',(y*100).toFixed(1)+'%');
+     });
+     card.addEventListener('pointerleave',()=>{
+       card.style.setProperty('--tilt-y','0deg');card.style.setProperty('--tilt-x','0deg');
+       card.style.setProperty('--spot-x','50%');card.style.setProperty('--spot-y','50%');
+     });
+   });
+ }
+ // Scroll progress and back-to-top.
+ function scrollUI(){
+   const max=document.documentElement.scrollHeight-innerHeight;
+   document.getElementById('progress').style.width=(max>0?scrollY/max*100:0)+'%';
+   toTop.classList.toggle('show',scrollY>500);
+ }
+ addEventListener('scroll',scrollUI,{passive:true});scrollUI();
+ toTop.addEventListener('click',()=>scrollTo({top:0,behavior:reduced?'auto':'smooth'}));
+ // Subtle moving starfield.
+ const canvas=document.getElementById('starfield'),ctx=canvas.getContext('2d');
+ let w=0,h=0,stars=[],raf=0;
+ function setup(){
+   const d=Math.min(devicePixelRatio||1,1.5);w=innerWidth;h=innerHeight;
+   canvas.width=Math.floor(w*d);canvas.height=Math.floor(h*d);canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(d,0,0,d,0,0);
+   stars=Array.from({length:Math.min(100,Math.floor(w*h/12000))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.15+.2,a:Math.random()*.48+.1,s:(Math.random()*.17+.025)*(Math.random()>.5?1:-1)}));
+ }
+ function draw(){
+   ctx.clearRect(0,0,w,h);
+   stars.forEach(s=>{s.y-=s.s;if(s.y<0)s.y=h;if(s.y>h)s.y=0;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(218,232,255,${s.a})`;ctx.fill()});
+   if(!reduced)raf=requestAnimationFrame(draw);
+ }
+ setup();draw();addEventListener('resize',()=>{cancelAnimationFrame(raf);setup();draw()},{passive:true});
+ // Scroll reveals.
+ const revealItems=document.querySelectorAll('.reveal');
+ if('IntersectionObserver'in window&&!reduced){
+   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});
+   revealItems.forEach(item=>observer.observe(item));
+ }else revealItems.forEach(item=>item.classList.add('visible'));
+ filterCards();
+})();
+</script>
 </body>
-
 </html>
